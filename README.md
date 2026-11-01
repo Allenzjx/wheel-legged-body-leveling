@@ -2,6 +2,15 @@
 
 基于项目 poster v11.25 的静态研究展示网站。保留学术版排版、真实 CAD 与 UI 截图、实验数据和四段完整比较视频，围绕 Recording 与 Residual PPO。
 
+## 公开网站
+
+- 网站：https://allenzjx.github.io/wheel-legged-body-leveling/
+- 源码：https://github.com/Allenzjx/wheel-legged-body-leveling
+- 2026-10-31 已通过 GitHub Actions 在 Linux 上构建、检查并部署；43 项匿名网页与素材检查通过，视频支持分段请求并已在浏览器实际播放。
+- 网站可直接访问，无需 GitHub 登录。今后向 `main` 推送内容更新会自动发布。
+
+UI 操作录屏仍由作者补录，页面已标明预留位置。所有迁移内容沿用已核实的数据与素材。
+
 ## 本地预览
 
 安装 Node.js 20 或更新版本后，在此目录运行：
