@@ -1,0 +1,43 @@
+{
+  "case_id": "grid_d1_mu1",
+  "height_mm": 100,
+  "sample_hz": 120,
+  "window_source": "Recorded Replay; unchanged windows applied to both methods",
+  "boundary": "start_tick_exclusive < tick <= end_tick_inclusive",
+  "windows": {
+    "FR1": {
+      "start_tick_exclusive": 9,
+      "end_tick_inclusive": 2053,
+      "start_s": 0.075,
+      "end_s": 17.108333333333334
+    },
+    "FL": {
+      "start_tick_exclusive": 2049,
+      "end_tick_inclusive": 3335,
+      "start_s": 17.075,
+      "end_s": 27.791666666666668
+    },
+    "RR": {
+      "start_tick_exclusive": 3210,
+      "end_tick_inclusive": 7240,
+      "start_s": 26.75,
+      "end_s": 60.333333333333336
+    },
+    "FR2": {
+      "start_tick_exclusive": 7296,
+      "end_tick_inclusive": 7911,
+      "start_s": 60.8,
+      "end_s": 65.925
+    },
+    "RL": {
+      "start_tick_exclusive": 7865,
+      "end_tick_inclusive": 10066,
+      "start_s": 65.54166666666667,
+      "end_s": 83.88333333333334
+    }
+  },
+  "rms_definition": "Native120Hz right-endpoint equal-interval RMS. sqrt(sum(angle_deg^2)/N), with start_tick_exclusive < tick <= end_tick_inclusive. Source is the complete streamed native aggregate, not15Hz video reconstruction; no trapezoidal weighting.",
+  "FR_pooling": "sqrt((FR1_RMS^2*N1 + FR2_RMS^2*N2)/(N1+N2)); same result as pooling squared-angle integrals and durations. Never average RMS values.",
+  "sampling": "Bars and summary statistics: original120Hz aggregates. Curve and rendered snapshots: actual retained15Hz link-pose samples, without interpolation.",
+  "source_report_sha256": "6b0fc1d4aaa47f00fcad5c3e420dca0683f82004c5c95858b4f1475524ccf066"
+}
