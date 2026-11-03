@@ -1,4 +1,4 @@
-"""Regenerate the website's scientific figures from its public derived CSV.
+"""Regenerate archived scientific figures from their retained derived CSV.
 
 Requires Python, pandas, numpy and matplotlib. Optional --source-root rebuilds
 the derived CSV from the original, read-only project evidence directory.
@@ -16,7 +16,8 @@ ROOT = Path(__file__).resolve().parents[1]
 parser = argparse.ArgumentParser()
 parser.add_argument('--source-root', type=Path, help='Original robotics project root; read only')
 args = parser.parse_args()
-DATA = ROOT / 'public' / 'data'; FIG = ROOT / 'public' / 'figures'
+ARCHIVE = ROOT / 'research' / 'archive' / '2026-10-31'
+DATA = ARCHIVE / 'data'; FIG = ARCHIVE / 'figures'
 DATA.mkdir(parents=True, exist_ok=True); FIG.mkdir(parents=True, exist_ok=True)
 METRICS = ['exact_body_tilt_rms_deg', 'peak_body_tilt_deg', 'roll_rms_deg', 'pitch_rms_deg']
 METHODS = ['recording', 'updated_ppo']

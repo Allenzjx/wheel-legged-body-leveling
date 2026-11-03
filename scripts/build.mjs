@@ -1,1 +1,1 @@
-import './build-academic.mjs';
+import './build-report.mjs';

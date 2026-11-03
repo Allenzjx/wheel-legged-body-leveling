@@ -1,0 +1,61 @@
+{
+  "schema": "wheel-legged-body-leveling.current-results.v1",
+  "reviewedOn": "2026-11-03",
+  "scope": "Retained simulated evaluations; no physical-robot validation is reported.",
+  "commonCompletion100": {
+    "conditions": 39,
+    "recordedReplay": 31,
+    "residualPpo": 37,
+    "obstacleHeightMm": 100,
+    "cohort": "known_regression_39",
+    "rule": "common_success == True",
+    "scope": "Known matched gap/friction conditions used in diagnosis and development; not unseen generalization.",
+    "interpretation": "Completion counts only; not a measure of body-leveling quality and not the stricter common-and-native success count.",
+    "source": {
+      "path": "archive/2026-10-31/data/evaluation-100mm.csv",
+      "sha256": "fb47e58f0b7aca13f5b6acd7222af598c69a314e3d70f2d2677d5b1fccb44ec9",
+      "cohortFilter": "known_regression_39",
+      "recordedReplayMethod": "recording",
+      "residualPpoMethod": "updated_ppo",
+      "countField": "common_success",
+      "caseKey": "case_id"
+    }
+  },
+  "featuredComparison100": {
+    "caseId": "grid_d1_mu1",
+    "obstacleHeightMm": 100,
+    "initialGapTargetMm": 218.4933173179947,
+    "initialGapDisplayMm": 218.5,
+    "frictionScale": 1.0,
+    "selection": "Selected nominal example; not a reliability estimate.",
+    "conditionsNote": "Requested initial gap and friction are matched; actual gaps after startup alignment may differ slightly.",
+    "evaluation": "Frozen controller; deterministic inference without learning during evaluation.",
+    "recordedReplayCompletes": true,
+    "residualPpoCompletes": true,
+    "embeddedVideoSuccessRule": "Common assessment succeeds AND native controller success is true.",
+    "media": {
+      "path": "../public/media/comparison-100mm-nominal.mp4",
+      "sha256": "b738502e40605131ef21e8591189bdd839ba31a256893162c8411f65a24ef157",
+      "type": "Rendering of retained simulator link poses using project robot geometry",
+      "physicalPlaybackSpeed": 1,
+      "completeNativeEpisodes": true,
+      "sharedCameraAndScale": true,
+      "endBehavior": "An earlier-finishing method holds its final pose and timestamp; the final pair then holds for two seconds.",
+      "durationSeconds": 87.8
+    },
+    "checkpointSha256": "e263cdaaba087919e14bcf1c3f850f66983b84dd6cba5c54ef6494ce98481f2c",
+    "checkpointMatchesCompletionCohort": true
+  },
+  "archive": {
+    "path": "archive/2026-10-31",
+    "status": "Historical exports with distinct models, cohorts, outcome criteria, and measurement windows; not one current unified evaluation."
+  },
+  "reportingLimits": [
+    "A selected successful traversal does not establish overall reliability.",
+    "Common completion and native success are separate criteria.",
+    "Completion, inclination RMS, peak inclination, pitch, and roll are different outcomes.",
+    "Nominal, full-episode, per-wheel, paired-success, and holdout analyses must retain their own scope.",
+    "Historical 50 mm observations cannot be assigned to the current 100 mm controller.",
+    "Summary numbers without reconciled measurement evidence are not included in the current result."
+  ]
+}

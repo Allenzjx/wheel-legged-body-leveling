@@ -1,6 +1,6 @@
-# Wheel-legged body leveling
+# Residual PPO for Body Leveling of Wheel-Legged Robots During Obstacle Traversal
 
-基于项目 poster v11.25 的静态研究展示网站。保留学术版排版、真实 CAD 与 UI 截图、实验数据和四段完整比较视频，围绕 Recording 与 Residual PPO。
+机器人项目的静态研究网站，围绕 Recording 与 50 mm Residual PPO 整体控制框架。首页前置 100 mm 名义条件对比视频，下方保留按 50 mm、100 mm 和失败案例分类的视频。
 
 ## 公开网站
 
@@ -38,19 +38,21 @@ node scripts/serve.mjs
 
 - `content/site.json`：项目身份、视频路径、条件、说明，以及待补录的 `recordingDemo`。
 - `content/training.json`：50 mm 与 100 mm 使用一致字段结构的真实训练阶段。
-- `content/methods.json`：策略观测、动作范围、网络、奖励和训练参数。构建自动生成公开方法摘要。
-- `content/research-figures.json`：数据图路径、图注、来源与解读。
-- `scripts/build-academic.mjs`：页面结构及较长文案；`scripts/build.mjs` 是构建入口。
+- `research/current-results.json`：当前正文采用的已核实结果、适用范围和数据来源。
+- `research/README.md`：数据口径、模型、视频和历史记录说明。
+- `scripts/build-report.mjs`：页面结构及较长文案；`scripts/build.mjs` 是构建入口。
 - `public/academic.css`、`public/app.js`：视觉样式和浏览器交互。
 - `public/media/`：CAD、UI 截图、视频和封面。
-- `public/figures/`、`public/data/`：科研图、CSV、指标与来源信息。
+- `research/archive/2026-10-31/`：历史科研图、CSV、方法配置与来源信息，仅在 GitHub 供查阅，不进入网站构建输出。
 
 修改后重新构建和检查。不要直接编辑生成的 `dist/`。界面操作录屏由作者手动提供；公开页面保留明确标识的预留区域。补录时将 MP4 与封面放入 `public/media/`，并设置 `recordingDemo` 的 `title`、`src`、`poster`、`duration` 和 `description`。
 
 ## 数据与材料说明
 
-100 mm CSV 有 94 条方法—条件记录，即两个方法 ×（39 个已知条件 + 8 个留出条件），不是 94 个独立条件。倾斜姿态配对图仅取双方严格成功的 25 个和 5 个配对条件；失败试验仍保留在下载表中。几何完成窗口与完整运行窗口分别列出。
+当前网页采用100 mm已知39条件的 common completion：Recorded Replay 31/39，Residual PPO 37/39。该计数与各方法的 native success 或两者交集不同。50 mm方法介绍与100 mm实验各自保留适用范围。
 
-`scripts/generate-research-figures.py` 可从随站 CSV 重绘四组 100 mm 数据图，需要 Python、numpy、pandas 和 matplotlib。50 mm 参考曲线和原始阶段图已有 PNG/SVG，保留其出处与限制，不把重绘称为新实验。
+历史100 mm CSV有94条方法—条件记录，即两个方法 ×（39个已知条件 + 8个留出条件）。归档中的严格成功、配对姿态图和测量窗口各有独立定义，不能混成一组当前结果。未能与测量记录对应的图表、完成率、峰值和统一训练参数不进入当前网页正文。
 
-`public/documents/research-poster-v11-25.pdf` 是未经改动的原 poster，其旧二维码指向编辑页面，不能作为新 GitHub 网站的二维码使用。应在新网址验证后替换 poster 的二维码。此迁移包没有包含旧托管平台身份、凭据或内部审核材料。
+`scripts/generate-research-figures.py` 可从归档 CSV 重绘四组历史100 mm数据图，输出仍写入归档目录，需要Python、numpy、pandas和matplotlib。归档50 mm参考曲线和原始阶段图保留各自出处与限制。
+
+历史PDF保留在归档目录，不作为当前网页的数据入口。当前公开网址未变化，GitHub Pages二维码继续有效。仓库不含托管凭据或私人本机路径。
