@@ -1,6 +1,6 @@
 {
-  "schema": "wlr.poster-figures.v1",
-  "scope": "Original figure content rendered from the supplied report, with separate mobile panels of the same plots.",
+  "schema": "wlr.result-figures.v1",
+  "scope": "Body-leveling plots, wheel-transfer postures, and traversal performance for 50 mm and 100 mm obstacles. Mobile panels display individual plots from the same figures.",
   "extractions": [
     {
       "sourcePdf": "Zhu_Junxian_Fall_2026.pdf",

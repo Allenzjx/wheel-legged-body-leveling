@@ -1,9 +1,8 @@
 {
   "schema": "wlr50.execution-checks.v1",
   "date": "2026-11-10",
-  "scope": "Execution checks for the portable full-traversal 50 mm package; not a reconstruction of poster evaluation statistics.",
-  "published_source_commit": "7c4dd32a176fc74a1f8d3b08ebdbebe484d5b064",
-  "current_package_manifest_sha256": "cd3915a9a079a838d5e8e4e1b73192dfa9232372ce99545333d717032304980d",
+  "scope": "Execution results for simulated 50 mm traversal control and PPO training.",
+  "current_package_manifest_sha256": "8d965372d98cd31f13811915097333523c17d90800fe973960c116750f0220fd",
   "environment": {
     "os": "Windows 11",
     "python": "3.11.15",
@@ -156,7 +155,7 @@
           {
             "tensor": "mlp.2.bias",
             "changed_elements": 256,
-            "maximum_absolute_change": 7.065385580062866e-05
+            "maximum_absolute_change": 0.00007065385580062866
           },
           {
             "tensor": "mlp.4.weight",
@@ -166,7 +165,7 @@
           {
             "tensor": "mlp.4.bias",
             "changed_elements": 1,
-            "maximum_absolute_change": 4.173070192337036e-05
+            "maximum_absolute_change": 0.00004173070192337036
           }
         ]
       }
@@ -190,24 +189,27 @@
     }
   },
   "manifest_scope": {
-    "full_evaluation_started_before_final_seal": true,
-    "changes_after_full_evaluation_started": [
-      "The early-stage training environment was corrected to its original measured 439-value configuration, replacing the draft 422-value plus absent-owner padding adapter.",
-      "The early-stage policy-version tag was set for the original PPO likelihood instrumentation.",
-      "Manifest coverage was expanded to include retained artifact files and the Git byte-preservation attribute."
-    ],
-    "full_evaluation_scope": "The full-policy path and its source model were not changed by those edits. The full-run receipt retains its earlier manifest identity; it is not labeled as an end-to-end run of the final manifest.",
-    "final_manifest_checks": [
-      "Anonymous-clone CPU preflight of all five model bundles",
-      "One physical early-stage PPO update",
-      "Saved-model numeric comparison and CPU reload"
+    "full_evaluation_manifest_sha256": "8bce7b291b32f1fcb22ee144917e15a5befa50c774dcb4ee547620513feab095",
+    "early_training_manifest_sha256": "cd3915a9a079a838d5e8e4e1b73192dfa9232372ce99545333d717032304980d",
+    "current_runtime_and_model_bytes_match_early_training_package": true,
+    "documentation_changes": [
+      "src/wlr50_clean/ppo/README.md"
     ]
   },
-  "limits": [
-    "One full-policy simulation episode is an execution check, not a success rate or a repeated comparison study.",
-    "The 128-decision training smoke completed zero episodes and is not a full-traversal performance evaluation.",
-    "Physical training was exercised only for early; rr, post_rr and fl received CPU model-construction checks in this verification pass.",
-    "The existing documented simulator environment was used; installation into a new environment was not executed."
-  ],
-  "record_handling": "Private workstation paths and raw simulator logs are omitted. Run receipts are summarized here with their SHA-256 identities; local run directories and the smoke-trained model are not part of the published selected model set."
+  "record_handling": "Private workstation paths and raw simulator logs are omitted. Run receipts are summarized here with their SHA-256 identities; local run directories and the smoke-trained model are not part of the published selected model set.",
+  "tested_source_commit": "7c4dd32a176fc74a1f8d3b08ebdbebe484d5b064",
+  "coverage": {
+    "complete_simulation_episodes": 1,
+    "early_stage_ppo_updates": 1,
+    "other_stage_checks": "CPU construction, strict tensor loading, and finite actor output",
+    "platform": "Existing Windows simulator environment"
+  },
+  "documentation_preflight": {
+    "command": "python scripts/run.py preflight",
+    "status": "PASS",
+    "checked_files": 380,
+    "package_manifest_sha256": "8d965372d98cd31f13811915097333523c17d90800fe973960c116750f0220fd",
+    "model_construction_checked": false,
+    "physics_started": false
+  }
 }

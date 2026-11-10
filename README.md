@@ -1,20 +1,32 @@
 # Residual PPO for Body Leveling of Wheel-Legged Robots During Obstacle Traversal
 
-A static research website presenting Recording, the 50 mm Residual PPO control framework, and simulated obstacle-traversal results at 50 mm and 100 mm. The page combines the project's CAD model, actual Recording UI, matched comparison videos, training details, and the original Results figures from the poster.
+**Junxian Zhu · Duke University**
 
-## Website and source
+This project investigates body leveling during wheel-legged obstacle traversal. A four-legged, wheeled robot uses a recorded motion sequence to cross a step, while Residual Proximal Policy Optimization (PPO) learns state-dependent corrections to joint and wheel commands. Experiments in Isaac Sim compare Recorded Replay and Residual PPO on 50 mm and 100 mm obstacles.
 
-- [Public website](https://allenzjx.github.io/wheel-legged-body-leveling/)
-- [GitHub repository](https://github.com/Allenzjx/wheel-legged-body-leveling)
-- [50 mm simulation and PPO training package](research/50mm/code/)
+[Project website](https://allenzjx.github.io/wheel-legged-body-leveling/) · [Project report](research/README.md) · [50 mm training code](research/50mm/code/)
 
-The website and its media are publicly accessible without a GitHub login. The initial GitHub Pages deployment on October 31, 2026 passed the Linux build and 43 anonymous page/media checks; video range requests and browser playback were also checked. Updates pushed to `main` run the deployment workflow again.
+## Recording and residual control
 
-The author will supply the UI-operation recording. Its clearly marked space remains on the page. Robot illustrations and comparison videos show the project CAD model and simulation, rather than physical-robot trials.
+The Recording interface sets joint and wheel targets, captures movement steps, and saves a replayable reference sequence. Each step includes command events, duration, boundary states, and task metadata.
 
-## Local preview
+Residual PPO combines this reference motion with feedback from body posture, joint and wheel state, contacts, support geometry, and obstacle-relative position. The controller requests eight joint-angle corrections and four wheel-speed corrections. Policy decisions run at 15 Hz, with actuator control and physics at 120 Hz.
 
-Install Node.js 20 or newer, then run from this directory:
+The 50 mm training procedure develops early motion, rear-right transfer, following transfer, and front-left wheel refinement. Each component learns its part of the crossing while preceding components retain their weights.
+
+## Experimental results
+
+Evaluation covers 39 approach-distance and friction conditions at each obstacle height. Residual PPO completed 39/39 conditions on the 50 mm step and 37/39 on the 100 mm step; Recorded Replay completed 34/39 and 31/39, respectively. Nominal comparisons show lower phase-wise body roll and pitch RMS with Residual PPO.
+
+The [results and video collection](https://allenzjx.github.io/wheel-legged-body-leveling/#evidence) report body inclination, wheel-transfer postures, traversal time, and completion. Comparison videos include nominal traversals, a longer approach distance, and a body-collision case, using matched camera views and 1× physical playback speed.
+
+## Simulation and training
+
+The [50 mm code package](research/50mm/code/) includes the controller, environment, observations, actions, rewards, PPO update loop, robot USD, recording reference, configurations, and model weights. The [run guide](research/50mm/code/README.md) covers full-controller evaluation and training continuations from the supplied stage models. The [installation guide](research/50mm/code/DEPENDENCIES.md) specifies the simulator environment.
+
+## Website development
+
+With Node.js 20 or newer, run:
 
 ```sh
 node scripts/build.mjs
@@ -22,38 +34,23 @@ node scripts/check.mjs
 node scripts/serve.mjs
 ```
 
-Open `http://127.0.0.1:4173`. No additional JavaScript packages are required. The local `/project-preview/` route checks deployment under a repository subpath; it is not a public address.
+Open `http://127.0.0.1:4173`. The `/project-preview/` route provides a local check of repository-relative URLs. The site requires no additional JavaScript packages.
 
-## GitHub Pages deployment
-
-The workflow is `.github/workflows/pages.yml`. In the repository, select **Settings → Pages → Build and deployment → Source → GitHub Actions**. A push to `main` builds, checks, and publishes the generated `dist/` directory. A deployment can also be started from **Actions → Deploy static research showcase → Run workflow**.
-
-The site uses relative resource paths and supports the `/wheel-legged-body-leveling/` project path. After a deployment, open the public address without signing in and check navigation, images, videos, and downloads. Keep poster QR codes pointed at the verified public address. The existing GitHub Pages address has not changed.
-
-The four supplied comparison MP4 files are complete H.264 videos, each smaller than 20 MB. They are served directly and loaded on demand. Do not replace them with Git LFS pointers or GitHub file-view pages. Larger replacement videos should use stable public media hosting whose playback has been checked without authentication.
-
-## Content and media maintenance
-
-| Location | Purpose |
+| Location | Contents |
 | --- | --- |
-| `content/site.json` | Project identity, video paths, conditions, captions, and the reserved `recordingDemo` |
-| `content/method50.json` | Public 50 mm method, observation/action interface, networks, stages, and stage-specific optimization settings |
-| `content/results.json` | Current Results figure order, paths, titles, and captions |
-| `public/figures/` | Original poster Results images, including the 50 mm and 100 mm nominal plots, wheel-transfer postures, and completion/performance table |
-| `public/media/` | CAD images, UI screenshots, comparison videos, and video covers |
-| `research/50mm/` | English method report and historical training records; the `code/` package is the runnable implementation |
-| `research/README.md` | Results provenance, video interpretation, and code scope |
-| `research/current-results.json` | Featured 100 mm comparison-video provenance |
-| `scripts/build-report.mjs` | Page structure and extended copy |
-| `scripts/render-method50.mjs` | Rendering of the 50 mm method section |
-| `public/academic.css`, `public/app.js` | Layout, visual style, and browser interactions |
+| `content/site.json` | Project information, video conditions, media paths, and Recording demonstration configuration |
+| `content/method50.json` | 50 mm control method and training procedure |
+| `content/results.json` | Results figure titles, captions, and display order |
+| `public/figures/` | Body-inclination plots, posture comparisons, and performance table |
+| `public/media/` | CAD views, UI screenshots, videos, and video covers |
+| `research/50mm/` | Method report, training code, models, and execution records |
+| `scripts/build-report.mjs`, `scripts/render-method50.mjs` | Page generation |
+| `public/academic.css`, `public/app.js` | Layout and browser interactions |
 
-`scripts/build.mjs` is the build entry point. Rebuild and run the checks after editing. Do not edit generated files in `dist/`. `content/training.json` is a historical organizing record and does not generate the current page.
+The build writes the site to `dist/`. Content and asset updates are made in the source directories, followed by the build and check commands. The Recording UI demonstration slot accepts a video and cover through `recordingDemo` in `content/site.json`.
 
-To add the author's Recording demonstration, place its MP4 and cover in `public/media/`, then set `recordingDemo.title`, `src`, `poster`, `duration`, and `description` in `content/site.json`. Describe only the operations visible in the supplied recording.
+## Deployment
 
-## Results and research code
+GitHub Actions builds and deploys the site on pushes to `main`, using `.github/workflows/pages.yml`. GitHub Pages uses **GitHub Actions** as its deployment source. Relative asset paths support the `/wheel-legged-body-leveling/` project URL.
 
-The current Results section reproduces the poster's original figures for both obstacle heights, configured in `content/results.json`. [Figure provenance](research/results-figures.json) records the original PDF identity and figure crops. Preserve their original values, labels, and experimental scope when updating the page.
-
-The 50 mm code package includes the actual controller, simulation environment, observation and action interfaces, reward definitions, PPO training loop, robot USD, recording-derived reference, and five model bundles. Its English run guide and dependency instructions describe complete-controller evaluation and independent training continuations of the supplied learned components. Isaac Sim, Isaac Lab, PyTorch, and RSL-RL are installed separately using the documented versions. A new continuation starts with fresh optimizer state and is not an exact historical resume or an automatic reconstruction from random initialization. Refer to the package guide for the precise checks performed and platform limitations.
+Images and H.264 videos are served directly without login. Video players load media on demand and support range requests. The public address is [allenzjx.github.io/wheel-legged-body-leveling](https://allenzjx.github.io/wheel-legged-body-leveling/).

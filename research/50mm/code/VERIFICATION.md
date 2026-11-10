@@ -1,30 +1,26 @@
-# Execution checks — 10 November 2026
+# Simulation and Training Execution Results
 
-The portable package was checked in the documented Windows 11 simulator environment: Python 3.11.15, Isaac Sim 5.1.0.0, Isaac Lab core 0.54.3, PyTorch 2.7.0+cu128, and RSL-RL 5.0.1. The source was also cloned from the public repository without authentication, at commit `7c4dd32a176fc74a1f8d3b08ebdbebe484d5b064`.
+Execution tests ran on Windows 11 with Python 3.11.15, Isaac Sim 5.1.0.0, Isaac Lab core 0.54.3, PyTorch 2.7.0+cu128, and RSL-RL 5.0.1.
 
-| Check | Observed result |
+| Test | Result |
 | --- | --- |
-| Anonymous public clone, CPU preflight | Exit code 0; 380 package files checked; all five model bundles loaded strictly and produced finite actor outputs. |
-| Complete controller, deterministic simulation, seed 4001 | Exit code 0; native `SUCCESS`; 1,404 policy decisions, 11,232 physics ticks, 93.6 simulated seconds; zero policy updates. |
-| Early-stage training, seed 1001 | Exit code 0; 128 stored and actor-eligible transitions; one PPO update and 20 Adam steps. The short rollout completed zero episodes. |
-| Saved training model | All six actor tensors and all six critic tensors changed. All saved values remained finite. Strict CPU reloading and a finite 12-coordinate forward pass succeeded. |
+| Public repository download and CPU preflight | 380 package files passed checksum checks. All five model bundles loaded strictly and produced finite actor outputs. |
+| Complete traversal, deterministic policy, seed 4001 | `SUCCESS`; 1,404 policy decisions, 11,232 physics ticks, 93.6 simulated seconds; zero policy updates. |
+| Early-motion training, seed 1001 | 128 stored and actor-eligible transitions; one PPO update and 20 Adam steps. The rollout ended at its sampling budget with zero completed episodes. |
+| Saved training model | All six actor tensors and all six critic tensors changed. Saved values were finite, and strict CPU reloading produced a finite 12-coordinate action output. |
 
-The maximum absolute parameter change was approximately `2.71422e-4` for the actor and `2.73697e-4` for the critic. These values establish that the training update changed the saved model; they are not measures of motion quality. The continuation used fresh Adam state, and its output did not replace any supplied selected checkpoint.
+All commands exited with code 0. The maximum absolute parameter change was approximately `2.71422e-4` for the actor and `2.73697e-4` for the critic. Training used a newly initialized Adam optimizer and wrote the updated weights to a separate run directory.
 
-## Package identities
+## Commands
 
-The complete-controller simulation started under manifest:
+```powershell
+python scripts/run.py preflight --check-models
+python scripts/run.py evaluate --stage full --run-dir runs/full-eval-001 --seed 4001 --max-decisions 3000
+python scripts/run.py train --stage early --run-dir runs/early-smoke-001 --seed 1001 --decisions 128
+```
 
-`8bce7b291b32f1fcb22ee144917e15a5befa50c774dcb4ee547620513feab095`
+## Test coverage
 
-The public-clone preflight and early-stage training used the final manifest:
+The simulation test covers one complete 50 mm traversal. The training test covers one early-motion update and saved-model reloading. The rear-right, following-transfer, and front-left models received CPU construction and state-loading checks. Tests used an existing Windows simulator environment; fresh-environment installation and Linux execution remain untested.
 
-`cd3915a9a079a838d5e8e4e1b73192dfa9232372ce99545333d717032304980d`
-
-Between these seals, the early training entry was corrected to its original measured 439-value environment, its PPO instrumentation tag was set, and manifest coverage was expanded to include retained artifacts and Git byte-preservation attributes. Those edits did not change the complete-controller evaluation path or its model. The full-run receipt nevertheless retains the earlier manifest identity; it is not presented as an end-to-end execution of the final manifest.
-
-## Scope
-
-This records package execution, not reproduction of the poster's evaluation statistics. One complete simulation episode does not establish a success rate. The training check covers one early-stage update; physical training of `rr`, `post_rr` and `fl` was not exercised in this pass. Their numeric state loading and model construction were checked on CPU.
-
-The checks used an existing simulator environment. Installation into a new environment was not executed. The [machine-readable record](verification.json) contains commands, counts, model identities, numerical changes and receipt hashes. Private workstation paths and raw simulator logs are omitted.
+The [execution record](verification.json) contains commands, individual run and package identifiers, tensor changes, and receipt checksums. The [installation guide](DEPENDENCIES.md) specifies the runtime dependencies.

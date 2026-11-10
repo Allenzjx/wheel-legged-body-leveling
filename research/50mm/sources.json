@@ -2,7 +2,7 @@
   "schema": "wheel-legged-body-leveling.50mm-sources.v1",
   "scope": "Full-traversal 50 mm composite policy and its training records",
   "source_root_name": "robotics_sim",
-  "paths": "Project-relative provenance identifiers; original source files are not included in this compact model archive.",
+  "paths": "Project-relative identifiers and hashes for source records. The runnable implementation is included in code/src/.",
   "checkpoint": {
     "name": "checkpoint_CP233547_FL000587_data002048_ret000000_ga2e6cc5fef6d.pt",
     "sha256": "34537113f574361df736a1aafb15bca1ef5afb01614d3a79998b35b0fea102e6",

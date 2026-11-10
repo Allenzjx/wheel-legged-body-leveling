@@ -1,35 +1,62 @@
-# Results, implementation, and evidence scope
+# Residual PPO for Body Leveling of Wheel-Legged Robots During Obstacle Traversal
 
-This directory accompanies the [project website](https://allenzjx.github.io/wheel-legged-body-leveling/) with method documentation, the 50 mm implementation, model identities, and figure and video provenance. The reported experiments concern simulated obstacle traversal. A selected comparison video illustrates one case; it does not estimate reliability across conditions.
+**Junxian Zhu · Duke University**
 
-## Current poster Results
+## Project overview
 
-The website presents the original Results figures from the poster for both 50 mm and 100 mm obstacles. The figure list, captions, and display order are maintained in [content/results.json](../content/results.json), and the original images are in [public/figures/](../public/figures/). [results-figures.json](results-figures.json) records the original PDF identity and figure crops.
+This project develops a recording interface and a residual reinforcement-learning controller for wheel-legged obstacle traversal. The robot combines rolling motion with sequential wheel lifting to cross a step. Body leveling reduces chassis inclination as wheels unload, move over the obstacle, and return to contact.
 
-The Results section includes:
+The platform has four articulated wheel legs, eight leg joints, and four driven wheels. Experiments use Isaac Sim and Isaac Lab to evaluate 50 mm and 100 mm step traversal.
 
-- Nominal total body-inclination traces and phase-wise roll and pitch RMS at both obstacle heights, using a requested initial gap of 218.5 mm and friction multiplier of 1.0.
-- Wheel-transfer posture comparisons with the corresponding angles and timestamps.
-- The poster's completion and traversal-performance table across 39 test conditions at each obstacle height.
+<img src="../public/media/robot-cad-isometric.png" alt="CAD model of the wheel-legged robot with four articulated wheel legs" width="560">
 
-Keep each figure's original labels, values, and scope. Nominal traces, phase-wise statistics, posture snapshots, and condition-level completion counts answer different questions. Code verification has its own scope: packaging or running the code does not by itself reproduce all poster results.
+## Recording
 
-## 50 mm method and runnable code
+The Recording interface stages hip, knee, and wheel targets and applies them together at launch. Start and stop controls define each capture interval. Accepted steps form a sequence that can be inspected, replayed, and saved.
 
-The [50 mm method report](50mm/README.md) describes the overall state-conditioned residual controller, its four learned components, and its selected training history. Recorded commands supply the motion reference; body, joint, contact, and task observations inform eight joint-angle and four wheel-speed correction requests. The policy operates at 15 Hz, with a 120 Hz physical interface. Stage-specific model architectures and optimization settings retain their individual scopes.
+Each step records command events, duration, boundary states, and task metadata. These sequences provide the nominal joint and wheel commands for obstacle traversal. PPO collects training experience through interactions with the simulator.
 
-The complete [50 mm simulation and PPO training package](50mm/code/) contains the actual source, native controller and simulation environment, observations, actions, rewards, PPO update instrumentation, robot USD, recording-derived reference, configurations, and five model bundles. Its README and `DEPENDENCIES.md` provide the English installation and run instructions. Isaac Sim and Isaac Lab remain external runtime dependencies installed from their official distributions.
+## Residual PPO
 
-The public launcher supports evaluation of the complete selected controller and independent training continuations of the supplied learned components. Each continuation uses fresh Adam state and an explicit seed. It is not an exact historical resume, and the commands do not automatically reconstruct the selected composite from random initialization. Evaluation outcomes and new training records are written to separate run directories. Consult the code package's verification record for the checks actually performed; an import check, a PPO update, and a completed traversal are distinct outcomes.
+Residual PPO adds learned corrections to the recorded motion reference. Body orientation, joint and wheel state, contact forces, support geometry, and obstacle-relative position inform eight joint-angle corrections and four wheel-speed corrections. The control interface applies phase-dependent bounds and actuator limits. Policy decisions run at 15 Hz, with physics and actuator control at 120 Hz.
 
-The 100 mm evaluations retain their own model identities. The 50 mm implementation and optimization description do not imply that the 100 mm controller was trained with identical networks or settings.
+The 50 mm controller is trained across four components:
 
-## Comparison videos
+1. **Early motion:** establish forward progress and the movement needed to reach the wheel-transfer phases.
+2. **Rear-right transfer:** learn contact and support transfer around the rear-right wheel.
+3. **Following transfer:** coordinate front-leg preparation, continued support transfer, and rear-left lift and placement.
+4. **Front-left wheel refinement:** encourage forward travel and reduce reverse wheel commands or counter-rotation without progress.
 
-The featured 100 mm video is the nominal case `grid_d1_mu1`, with a requested initial gap of 218.5 mm and friction multiplier of 1.0. The displayed requested gap is rounded; startup alignment can produce small differences in the measured gap. Both methods finish this selected case. Its controller and media identities are retained in [current-results.json](current-results.json), the comparison-video provenance record.
+Preceding components retain their weights while each new component learns its correction. PPO uses a clipped policy objective, a critic, and generalized advantage estimation. Rewards combine traversal progress and completion with stage-specific posture, contact, and motion-quality terms. The [50 mm method report](50mm/README.md) details the network architecture and optimization settings.
 
-The supplied comparisons render retained simulator link poses with the project robot geometry. They preserve complete native evaluation episodes at 1× physical speed, with a shared camera and scale. When one method ends earlier, its final pose and timestamp remain visible while the other continues; the final pair holds for two seconds. These are frozen-controller evaluations, not physical-robot footage or recordings of training.
+## Experimental results
 
-The embedded `Success` labels require both the common completion assessment and the controller's native success condition. This differs from a count using `common_success` alone. The 50 mm nominal comparison is identified in the 50 mm method report and tied to its supplied full-controller model. Keep each video's obstacle height, model, task conditions, and outcome rule with the video rather than combining selected clips into a success-rate estimate.
+Recorded Replay and Residual PPO are compared across 39 approach-distance and friction conditions at each obstacle height: nine fixed conditions and 30 sampled conditions. Nominal comparisons use an initial gap of 218.5 mm and a friction multiplier of 1.0.
 
-The author will provide the Recording UI-operation video. Its reserved area on the website is explicitly marked; screenshots and simulated comparison videos do not stand in for that missing operation recording.
+Residual PPO completed 39/39 conditions on the 50 mm step and 37/39 on the 100 mm step, compared with 34/39 and 31/39 for Recorded Replay. The nominal comparisons show lower phase-wise roll and pitch RMS with Residual PPO. Completion, peak body inclination, and peak traversal time are reported below.
+
+![Traversal completion, peak body inclination, and peak completion time for 50 mm and 100 mm obstacles](../public/figures/poster-results-completion-table.png)
+
+### 50 mm body leveling
+
+![50 mm nominal traversal: total body inclination and phase-wise roll and pitch RMS](../public/figures/poster-results-50mm-nominal.png)
+
+### 100 mm body leveling
+
+![100 mm nominal traversal: total body inclination and phase-wise roll and pitch RMS](../public/figures/poster-results-100mm-nominal.png)
+
+## Demonstrations
+
+The [video collection](https://allenzjx.github.io/wheel-legged-body-leveling/#videos) includes 50 mm and 100 mm nominal comparisons, a longer approach distance, and a 100 mm body-collision case. Paired videos use the same camera, scale, task conditions, and physical playback speed. Complete simulator episodes are rendered from recorded link poses; a view that finishes first holds its final pose while the other completes.
+
+The collision case illustrates a remaining failure mode. Physical-robot evaluation and additional terrain testing form the next experimental steps.
+
+## Code and models
+
+The [50 mm simulation and PPO package](50mm/code/) contains the controller, simulation environment, observation and action interfaces, reward definitions, training loop, robot asset, recording reference, and model weights.
+
+- [Training and evaluation instructions](50mm/code/README.md)
+- [Environment installation](50mm/code/DEPENDENCIES.md)
+- [Execution checks](50mm/code/VERIFICATION.md)
+
+The full-controller evaluation starts at the beginning of the crossing. Stage-training commands continue the supplied component weights with a newly initialized Adam optimizer. The execution checks include a successful 93.6-second full traversal and one PPO training update with saved-model reloading.

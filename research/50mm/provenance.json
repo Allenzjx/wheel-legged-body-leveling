@@ -1,13 +1,13 @@
 {
   "schema": "wheel-legged-body-leveling.50mm-export.v1",
   "date": "2026-11-10",
-  "scope": "Full-traversal 50 mm composite policy; no simulator execution or parameter updates",
+  "scope": "Numeric export of the full-traversal 50 mm composite actor and critic.",
   "source_checkpoint_sha256": "34537113f574361df736a1aafb15bca1ef5afb01614d3a79998b35b0fea102e6",
   "checks": {
     "numeric_npz_allow_pickle_false": true,
     "actor_tensors": 26,
     "critic_tensors": 6,
-    "max_absolute_tensor_difference": 0.0,
+    "max_absolute_tensor_difference": 0,
     "shape_dtype_and_value_identity": true,
     "machine_specific_paths_absent": true,
     "local_document_links_resolve": true
@@ -25,28 +25,20 @@
     },
     {
       "path": "model/configuration.json",
-      "bytes": 4652,
-      "sha256": "d01b68cb4ccad91e9c086ea329a18e3a6abb197869311f4eccebe50c06d64855"
+      "bytes": 4487,
+      "sha256": "80eb1eaa92a1bc076c4425ce25c1ffc4cd548514018280d2984db342ca6e921e"
     },
     {
       "path": "model/tensors.json",
-      "bytes": 11960,
-      "sha256": "90d1cd8dc24ea2b00bb2f08571605d5f75675cfe08d4fc42208f7d4be17e7e4b"
-    },
-    {
-      "path": "README.md",
-      "bytes": 9119,
-      "sha256": "fd9769905a99215cde67a15b1e799502827439e50c2e9d8e1ccbd6bf1f486ef2"
-    },
-    {
-      "path": "sources.json",
-      "bytes": 6331,
-      "sha256": "9a6f4c4b68fbfeeb5986146d94c7d3c60d65dd888ec214bcc93532134402103e"
+      "bytes": 11579,
+      "sha256": "5deac10957177542e4d3031ac0913f9d2da1862b030076dd64f1c757f86c9874"
     },
     {
       "path": "training.json",
-      "bytes": 6805,
-      "sha256": "861afa73f8f9098c5db3708f0e6462072a1d4578e232b1dd59c407554a36cef9"
+      "bytes": 6628,
+      "sha256": "b367ea35dffba3e386c0f2237f7ed0ab53e80c660dbf9bec6a13ef1fcd8a58c4"
     }
-  ]
+  ],
+  "execution_record": "code/verification.json",
+  "file_hash_basis": "Repository file bytes; text files use LF line endings."
 }

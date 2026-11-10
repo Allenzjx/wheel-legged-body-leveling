@@ -1,5 +1,5 @@
 {
-  "scope": "Path-only packaging changes. Original source fingerprints remain in original-source-manifest.json. Historical receipts are provenance, not new validation results.",
+  "scope": "Source-path relocation and documentation updates. Numerical model parameters and runtime configuration are preserved. original-source-manifest.json records source fingerprints.",
   "files": [
     {
       "path": "configs/environment_lock.json",
@@ -132,6 +132,14 @@
       "original_sha256": "327dbe767e4f2ba8de13c4edc9ec4bcc654abfa9c59d0bfc5fc1234779b4205d",
       "packaged_sha256": "89612809c86986763f2ba633f1ff24d9744cc7986c72809a41ede587b25d44cb",
       "change": "Relocated machine-specific paths; numerical configuration unchanged."
+    }
+  ],
+  "documentation_updates": [
+    {
+      "path": "src/wlr50_clean/ppo/README.md",
+      "original_sha256": "0d429a5dc33ddcb53b75a0261fd6e36a6a35669cfefe2a1e9c2696f5bef6b5b3",
+      "packaged_sha256": "95108c394ba7254661e535c9ed4b12cca4de1812b033f723db51f4b8322ff8a9",
+      "change": "Replaced outdated module instructions with the 50 mm control method, supported entry commands, and source map."
     }
   ]
 }

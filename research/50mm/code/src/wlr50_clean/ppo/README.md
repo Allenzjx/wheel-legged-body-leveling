@@ -1,54 +1,32 @@
-# Phase-specific residual PPO
+# Residual PPO for 50 mm obstacle traversal
 
-The frozen-FSM artifact modules use only the project's normal Python dependencies.
-Writing `ppo_baseline_transitions.parquet` additionally requires `pyarrow`.
-It is imported lazily by `EpisodeLogger.write_parquet`, so Isaac/FSM execution
-does not acquire a training or tabular-runtime dependency.
+This module implements the simulation environment, observations, residual action mapping, rewards, learned components, and PPO updates for the 50 mm wheel-legged traversal controller. A recorded motion reference supplies joint and wheel targets. State-dependent residuals adjust eight leg-joint commands and four wheel-speed commands as support transfers between wheels.
 
-Install the `ppo-artifacts` optional dependency before producing the final
-dataset. The focused Parquet round-trip test requires `pyarrow` and validates
-fixed-size 85D and 12D columns by reading the generated file back; it does not
-silently skip the serializer contract.
+The complete controller receives 536 observation values and issues 12 residual requests at 15 Hz. The physical control interface and simulation operate at 120 Hz. Training develops four learned components: early motion, rear-right transfer, following transfer, and front-left wheel refinement. The preceding components retain fixed weights during local training.
 
-The versioned v2 path adds a live Isaac/Isaac Lab residual environment, a true
-batched environment, the supported RSL-RL 5.0.1 PPO runner, phase-entry reset
-curriculum, deterministic physical evaluation, checkpoint promotion, and video
-publication.  It uses one shared actor/critic with a 125D deployable
-observation and a phase-masked, phase-scaled 12D residual.  The legacy 85D
-observation and artifact exporter remain byte-compatible and separate from the
-v2 training path.
+## Running the controller
 
-All live entry points are exposed through `wlr50_clean.ppo.cli` and the
-fail-fast PowerShell scripts in `scripts/`.  A training checkpoint is evidence
-only until matched validation metrics pass the stability gate and an
-independent locked-test aggregate authorizes the final improved name.
+The [run guide](../../../README.md) and [dependency instructions](../../../DEPENDENCIES.md) describe installation, evaluation, and training. From `research/50mm/code`, the public entry point is:
 
-## Residual safety boundary
+```powershell
+python scripts/run.py preflight --check-models
+python scripts/run.py evaluate --stage full --run-dir runs/full-eval-001 --seed 4001 --max-decisions 3000
+python scripts/run.py train --stage early --run-dir runs/early-001 --seed 1001 --decisions 128
+```
 
-The Recording ±30% envelope is an advisory divergence diagnostic and may guide
-policy initialization, but it is never used in the action projection path. It
-is not subtracted as nominal "headroom" and does not scale or clip the requested
-residual. The tanh output scale derives from configured physical action-range
-spans. Runtime hard projection then uses the canonical actuator limits,
-configured servo joint margins, wheel speed limits, exact versioned
-`ppo_action_mask_full12` values from the motion contract, residual slew limits,
-and explicit body-collision/wheel-only stop projection. The all-zero input has
-a dedicated bitwise nominal fast path only when the previous projected
-residual is also zero; otherwise it safely slews back to zero.
+Evaluation uses deterministic actions and fixed model parameters. Stage-specific training continues the supplied weights with a newly initialized Adam optimizer. Each run writes its results, sampled transitions, updates, and model parameters to its own output directory.
 
-## Confirmed-Trial dataset export
+## Module map
 
-`SelectedTrialStreamingExporter` reads `full12_commands_120hz.jsonl` and
-`observation_120hz.jsonl` incrementally, validates every +1 tick and +1/120 s
-step, checks every logged phase mask against the frozen contract, audits
-nominal/residual/applied equality on every physics tick, and emits contiguous
-15 Hz transitions. Construction of `SelectedTrialMetadata` fails
-unless physical task success and external Trial selection are explicitly
-confirmed and Recording divergence is classified diagnostic-only.
+| Component | Modules |
+| --- | --- |
+| Simulator and controller interface | `semantic_backend.py`, `semantic_env.py` |
+| Observation encoding | `semantic_observation.py` |
+| Residual action mapping and actuator limits | `action_projection.py`, `semantic_residual_adapter.py` |
+| Early-motion actor and PPO update instrumentation | `semantic_rear_owner_actor.py`, `semantic_training.py` |
+| Rear-right transfer | `semantic_rr_capture_local.py`, `semantic_rr_capture_local_actor.py`, `semantic_rr_capture_local_task.py` |
+| Following transfer | `semantic_post_rr_front_prep.py`, `semantic_post_rr_front_prep_actor.py`, `semantic_post_rr_front_prep_task.py` |
+| Front-left wheel refinement | `semantic_fl_forward.py`, `semantic_fl_forward_actor.py`, `semantic_fl_forward_task.py` |
+| Complete-controller evaluation | `semantic_fl_prior_retirement.py`, `semantic_fl_prior_retirement_actor.py`, `semantic_fl_prior_retirement_task.py` |
 
-`export_to_logger` is read-only. `export_artifacts` is the separate explicit
-write boundary for the JSONL, Parquet, and manifest files; it refuses to
-overwrite any existing artifact. Do not call it until a Trial has been
-selected and frozen by the physical-safety review.
-It also writes `zero_residual_equivalence.json`, binding every 120 Hz source
-command tick and every exported 15 Hz transition to the frozen nominal action.
+Stage-specific rewards, observation schemas, and motion settings are stored under [`configs/`](../../../configs/). The [method report](../../../../README.md) describes the controller architecture, training objectives, and optimization settings.
