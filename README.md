@@ -42,12 +42,11 @@ The four supplied comparison MP4 files are complete H.264 videos, each smaller t
 | `public/figures/` | Original poster Results images, including the 50 mm and 100 mm nominal plots, wheel-transfer postures, and completion/performance table |
 | `public/media/` | CAD images, UI screenshots, comparison videos, and video covers |
 | `research/50mm/` | English method report and historical training records; the `code/` package is the runnable implementation |
-| `research/README.md` | Results provenance, video interpretation, code scope, and historical archive definitions |
-| `research/current-results.json` | Retained 100 mm evaluation and featured-video provenance record; not the source of every current poster figure |
+| `research/README.md` | Results provenance, video interpretation, and code scope |
+| `research/current-results.json` | Featured 100 mm comparison-video provenance |
 | `scripts/build-report.mjs` | Page structure and extended copy |
 | `scripts/render-method50.mjs` | Rendering of the 50 mm method section |
 | `public/academic.css`, `public/app.js` | Layout, visual style, and browser interactions |
-| `research/archive/2026-10-31/` | Historical CSV exports, figures, method configurations, and source notes; excluded from the website build output |
 
 `scripts/build.mjs` is the build entry point. Rebuild and run the checks after editing. Do not edit generated files in `dist/`. `content/training.json` is a historical organizing record and does not generate the current page.
 
@@ -55,10 +54,6 @@ To add the author's Recording demonstration, place its MP4 and cover in `public/
 
 ## Results and research code
 
-The current Results section reproduces the poster's original figures for both obstacle heights, configured in `content/results.json`. [Figure provenance](research/results-figures.json) records the original PDF identity and figure crops. Preserve their original values, labels, and experimental scope when updating the page; the archived CSV is not a replacement source for all poster figures.
+The current Results section reproduces the poster's original figures for both obstacle heights, configured in `content/results.json`. [Figure provenance](research/results-figures.json) records the original PDF identity and figure crops. Preserve their original values, labels, and experimental scope when updating the page.
 
 The 50 mm code package includes the actual controller, simulation environment, observation and action interfaces, reward definitions, PPO training loop, robot USD, recording-derived reference, and five model bundles. Its English run guide and dependency instructions describe complete-controller evaluation and independent training continuations of the supplied learned components. Isaac Sim, Isaac Lab, PyTorch, and RSL-RL are installed separately using the documented versions. A new continuation starts with fresh optimizer state and is not an exact historical resume or an automatic reconstruction from random initialization. Refer to the package guide for the precise checks performed and platform limitations.
-
-Historical 100 mm CSV exports contain 94 method–condition rows: two methods across 39 known regression conditions and eight holdout conditions. Their completion rules, model identities, inclusion criteria, and measurement windows remain attached to those archived analyses. They do not define one combined benchmark for the current poster Results. `scripts/generate-research-figures.py` can redraw four historical 100 mm plots from that archive; it requires Python, NumPy, pandas, and Matplotlib and writes back to the archive.
-
-Historical PDFs are retained in the archive. Their embedded QR codes may refer to earlier destinations; use the current public website for new poster QR codes.
