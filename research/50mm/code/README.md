@@ -2,6 +2,8 @@
 
 This package contains the controller, simulation environment, observation and action interfaces, reward definitions, PPO update instrumentation, recording reference, robot asset, and model parameters used by the 50 mm traversal system. Four learned components form the composite policy. The complete controller can be evaluated from the start of the obstacle traversal; each supplied component can also start a new training continuation.
 
+The [execution-check record](VERIFICATION.md) reports the public-clone preflight, one complete simulation episode, and one early-stage PPO update with saved-model reloading.
+
 The portable entry point is [`scripts/run.py`](scripts/run.py). It constructs the original actor and critic classes, loads the supplied numeric tensors, and uses the accompanying physical controller and RSL-RL PPO update. It creates a **fresh Adam optimizer** and an explicit random seed. Historical Adam moments, random-number-generator states, and old experiment receipts are not restored. Consequently, a new run is not an exact historical resume and is not an automatic reconstruction of the selected controller from random initialization.
 
 ## Installation

@@ -1,0 +1,213 @@
+{
+  "schema": "wlr50.execution-checks.v1",
+  "date": "2026-11-10",
+  "scope": "Execution checks for the portable full-traversal 50 mm package; not a reconstruction of poster evaluation statistics.",
+  "published_source_commit": "7c4dd32a176fc74a1f8d3b08ebdbebe484d5b064",
+  "current_package_manifest_sha256": "cd3915a9a079a838d5e8e4e1b73192dfa9232372ce99545333d717032304980d",
+  "environment": {
+    "os": "Windows 11",
+    "python": "3.11.15",
+    "isaacsim": "5.1.0.0",
+    "isaaclab": "0.54.3",
+    "torch": "2.7.0+cu128",
+    "tensordict": "0.12.2",
+    "rsl-rl-lib": "5.0.1",
+    "numpy": "1.26.0"
+  },
+  "fresh_environment_installation_performed": false,
+  "anonymous_public_clone": {
+    "authentication": "Git credential helper disabled; no login used",
+    "commit": "7c4dd32a176fc74a1f8d3b08ebdbebe484d5b064",
+    "command": "python scripts/run.py preflight --check-models",
+    "exit_code": 0,
+    "checked_files": 380,
+    "package_manifest_sha256": "cd3915a9a079a838d5e8e4e1b73192dfa9232372ce99545333d717032304980d",
+    "stages": [
+      "early",
+      "rr",
+      "post_rr",
+      "fl",
+      "full"
+    ],
+    "strict_numeric_state_loading": true,
+    "finite_actor_outputs": true,
+    "physics_started": false
+  },
+  "full_evaluation": {
+    "command": "python scripts/run.py evaluate --stage full --run-dir runs/full-eval-001 --seed 4001 --max-decisions 3000",
+    "exit_code": 0,
+    "seed": 4001,
+    "headless": true,
+    "device": "cuda:0",
+    "tested_package": {
+      "manifest_sha256": "8bce7b291b32f1fcb22ee144917e15a5befa50c774dcb4ee547620513feab095",
+      "checked_files": 370
+    },
+    "model_archive_sha256": "a3719a14def421e9801ffa170e4f76df91cf9a19e63cbfa715a6587c67c571d3",
+    "original_checkpoint_sha256": "34537113f574361df736a1aafb15bca1ef5afb01614d3a79998b35b0fea102e6",
+    "result": {
+      "status": "EPISODE_COMPLETE",
+      "policy_updates": 0,
+      "decisions": 1404,
+      "episode": {
+        "duration_seconds": 93.6,
+        "physics_tick": 11232,
+        "termination_reason": "SUCCESS",
+        "task_success": true,
+        "full_task_success": true
+      },
+      "scope": "One native full-traversal episode"
+    },
+    "record_sha256": {
+      "run_json": "ef221455ca3efa9e5ceae940991f71f8632c6046540c5099ea16293af8941058",
+      "result_json": "4217a020af943e976671e01d4265bcc624349d962ed393cdbdbab897fa10ce31",
+      "decisions_jsonl": "2f9b44d6b5706f7096ed4e481555940bfff989f25b796e9add654f6aab54d1bc"
+    }
+  },
+  "early_training_smoke": {
+    "command": "python scripts/run.py train --stage early --run-dir runs/early-smoke-001 --seed 1001 --decisions 128",
+    "exit_code": 0,
+    "seed": 1001,
+    "headless": true,
+    "device": "cuda:0",
+    "tested_package": {
+      "manifest_sha256": "cd3915a9a079a838d5e8e4e1b73192dfa9232372ce99545333d717032304980d",
+      "checked_files": 380
+    },
+    "optimizer_initialization": "fresh Adam; no restored moments or historical RNG",
+    "source_model_archive_sha256": "770f9e9d7b067c03111b8c0f2c93ebfc1daed7d65b09ceef6ed4ab26fe91ec72",
+    "saved_model_archive_sha256": "c662a4a5fd3007977dfaf7066bddb8c2905d87ad8a88ca64a4982b3b05287c61",
+    "result": {
+      "status": "TRAINING_COMPLETE",
+      "counts": {
+        "stored_decisions": 128,
+        "actor_eligible_decisions": 128,
+        "uncredited_prefix_decisions": 0,
+        "ppo_updates": 1,
+        "optimizer_steps": 20,
+        "completed_episodes": 0
+      },
+      "scope": "Fresh-optimizer continuation from the supplied stage model; historical training is unchanged"
+    },
+    "actor_parameters_changed": true,
+    "finite_nonzero_gradient_observed": true,
+    "actor_parameter_sha256_before": "48d70c95eb271325b0064cd33b91e04f76942455ff1eff026356995494b427e7",
+    "actor_parameter_sha256_after": "f87233e902142b1e5fcbdf450990a1ea8d229997dcc3e16f0b974f60eb47438c",
+    "tensor_changes": {
+      "actor": {
+        "tensor_count": 6,
+        "changed_tensors": 6,
+        "changed_elements": 143894,
+        "maximum_absolute_change": 0.0002714218571782112,
+        "tensors": [
+          {
+            "tensor": "mlp.0.weight",
+            "changed_elements": 71679,
+            "maximum_absolute_change": 0.0002714218571782112
+          },
+          {
+            "tensor": "mlp.0.bias",
+            "changed_elements": 256,
+            "maximum_absolute_change": 0.00017294660210609436
+          },
+          {
+            "tensor": "mlp.2.weight",
+            "changed_elements": 65535,
+            "maximum_absolute_change": 0.0002626837231218815
+          },
+          {
+            "tensor": "mlp.2.bias",
+            "changed_elements": 256,
+            "maximum_absolute_change": 0.00021620281040668488
+          },
+          {
+            "tensor": "mlp.4.weight",
+            "changed_elements": 6144,
+            "maximum_absolute_change": 0.0002629603259265423
+          },
+          {
+            "tensor": "mlp.4.bias",
+            "changed_elements": 24,
+            "maximum_absolute_change": 0.00021965219639241695
+          }
+        ]
+      },
+      "critic": {
+        "tensor_count": 6,
+        "changed_tensors": 6,
+        "changed_elements": 137983,
+        "maximum_absolute_change": 0.0002736970782279968,
+        "tensors": [
+          {
+            "tensor": "mlp.0.weight",
+            "changed_elements": 71678,
+            "maximum_absolute_change": 0.00027223373763263226
+          },
+          {
+            "tensor": "mlp.0.bias",
+            "changed_elements": 256,
+            "maximum_absolute_change": 0.0002676830627024174
+          },
+          {
+            "tensor": "mlp.2.weight",
+            "changed_elements": 65536,
+            "maximum_absolute_change": 0.0002675764262676239
+          },
+          {
+            "tensor": "mlp.2.bias",
+            "changed_elements": 256,
+            "maximum_absolute_change": 7.065385580062866e-05
+          },
+          {
+            "tensor": "mlp.4.weight",
+            "changed_elements": 256,
+            "maximum_absolute_change": 0.0002736970782279968
+          },
+          {
+            "tensor": "mlp.4.bias",
+            "changed_elements": 1,
+            "maximum_absolute_change": 4.173070192337036e-05
+          }
+        ]
+      }
+    },
+    "saved_model_reload": {
+      "strict_cpu_reload_passed": true,
+      "saved_tensors_finite": true,
+      "model_forward_shape": [
+        1,
+        12
+      ],
+      "model_forward_finite": true,
+      "physics_started_for_reload": false
+    },
+    "record_sha256": {
+      "run_json": "b16c9d4e53de180eb5f5cbd2c7b36f3064b26ef09df79ef0b933583abb04899b",
+      "result_json": "99d32c5ce314245e1298767dcf719240316962fb3db43ff6a8c30cff010405f1",
+      "decisions_jsonl": "0a247f70301ba1c08f512a55abaab14ecb4faca6dde8a2c33a687200cebd6a6c",
+      "updates_jsonl": "ff0236a12aad79c6705a653bf0b6dab82e193f6623a032bb9a5e4155742f4130",
+      "rollout_npz": "fa9b74e9f6ada5efa464744083a3bf525a5d64516aeb1a56b963751ddaf4dae2"
+    }
+  },
+  "manifest_scope": {
+    "full_evaluation_started_before_final_seal": true,
+    "changes_after_full_evaluation_started": [
+      "The early-stage training environment was corrected to its original measured 439-value configuration, replacing the draft 422-value plus absent-owner padding adapter.",
+      "The early-stage policy-version tag was set for the original PPO likelihood instrumentation.",
+      "Manifest coverage was expanded to include retained artifact files and the Git byte-preservation attribute."
+    ],
+    "full_evaluation_scope": "The full-policy path and its source model were not changed by those edits. The full-run receipt retains its earlier manifest identity; it is not labeled as an end-to-end run of the final manifest.",
+    "final_manifest_checks": [
+      "Anonymous-clone CPU preflight of all five model bundles",
+      "One physical early-stage PPO update",
+      "Saved-model numeric comparison and CPU reload"
+    ]
+  },
+  "limits": [
+    "One full-policy simulation episode is an execution check, not a success rate or a repeated comparison study.",
+    "The 128-decision training smoke completed zero episodes and is not a full-traversal performance evaluation.",
+    "Physical training was exercised only for early; rr, post_rr and fl received CPU model-construction checks in this verification pass.",
+    "The existing documented simulator environment was used; installation into a new environment was not executed."
+  ],
+  "record_handling": "Private workstation paths and raw simulator logs are omitted. Run receipts are summarized here with their SHA-256 identities; local run directories and the smoke-trained model are not part of the published selected model set."
+}

@@ -8,6 +8,8 @@ This directory describes the composite policy used in the [50 mm nominal compari
 
 The complete [simulation and PPO code package](code/) includes the robot asset, recorded motion reference, controller, environment, observation and action interfaces, stage-specific rewards, training loop and five model bundles. Begin with the [installation instructions](code/DEPENDENCIES.md) and [English run guide](code/README.md).
 
+The [execution-check record](code/VERIFICATION.md) documents public-clone preflight, a complete simulation episode, and a single early-stage training update with model reloading.
+
 After installing the documented simulator environment, run these commands from `research/50mm/code`:
 
 ```powershell
