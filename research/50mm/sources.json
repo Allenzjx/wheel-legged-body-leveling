@@ -1,0 +1,127 @@
+{
+  "schema": "wheel-legged-body-leveling.50mm-sources.v1",
+  "scope": "Full-traversal 50 mm composite policy and its training records",
+  "source_root_name": "robotics_sim",
+  "paths": "Project-relative provenance identifiers; original source files are not included in this compact model archive.",
+  "checkpoint": {
+    "name": "checkpoint_CP233547_FL000587_data002048_ret000000_ga2e6cc5fef6d.pt",
+    "sha256": "34537113f574361df736a1aafb15bca1ef5afb01614d3a79998b35b0fea102e6",
+    "original_evaluation_git_commit": "f720f8a4548787fcc599707f6740b55e276ac903"
+  },
+  "records": [
+    {
+      "file": "TRAINING_METHOD_AND_PARAMETERS.md",
+      "project_relative_path": "poster_stability_update_20260929/revision_v11_2_stage_visual_evidence/learning/TRAINING_METHOD_AND_PARAMETERS.md",
+      "bytes": 12519,
+      "sha256": "c7c7b2bc00fed8c9cbebf9319d38102d84f6f4956306f366c976fa1a2bfc8917"
+    },
+    {
+      "file": "selected_effective_training_configs.json",
+      "project_relative_path": "poster_stability_update_20260929/revision_v11_2_stage_visual_evidence/learning/selected_effective_training_configs.json",
+      "bytes": 78703,
+      "sha256": "55b6032e55e8eb60ff4cda4bed6e4fc83e809bc8022af16bb8174c40d53ed435"
+    },
+    {
+      "file": "deployed_tensor_identity.json",
+      "project_relative_path": "poster_stability_update_20260929/revision_v11_2_stage_visual_evidence/learning/deployed_tensor_identity.json",
+      "bytes": 21962,
+      "sha256": "aba3ebae7fd035e623ff012b6061c3aa9bfa2efcb8dec817aee57e11e573bcad"
+    },
+    {
+      "file": "PPO_CODE_TO_PIPELINE_AND_SIGNED_COMMANDS.md",
+      "project_relative_path": "poster_stability_update_20260929/revision_v11_6_from_v11_4/methods/PPO_CODE_TO_PIPELINE_AND_SIGNED_COMMANDS.md",
+      "bytes": 17724,
+      "sha256": "1357798a6573039efdca237ec49a334396aa8b38526c154141619d6b76745d5a"
+    },
+    {
+      "file": "run_ppo_benchmark_v3.py",
+      "project_relative_path": "poster_stability_update_20260929/revision_v4/scripts/run_ppo_benchmark_v3.py",
+      "bytes": 15392,
+      "sha256": "5164da359dbbe075b5b00da4c5ed72287b441154f1c6a1c8691131f468f4b496"
+    },
+    {
+      "file": "semantic_env.py",
+      "project_relative_path": "wlr_robot/fsm_base_on_recording_ppo_phase_v1/src/wlr50_clean/ppo/semantic_env.py",
+      "bytes": 15194,
+      "sha256": "f15ce31897a9e0974dd79b9f25adfc224e8d0992a880a020ecdd7c905ee98de2"
+    },
+    {
+      "file": "semantic_supervisor.py",
+      "project_relative_path": "wlr_robot/fsm_base_on_recording_ppo_phase_v1/src/wlr50_clean/ppo/semantic_supervisor.py",
+      "bytes": 243547,
+      "sha256": "9be6b6f05abc628291bdb400adc190abe7dfa459db78da8cd3c2658c6864b484"
+    },
+    {
+      "file": "semantic_rear_owner_actor.py",
+      "project_relative_path": "wlr_robot/fsm_base_on_recording_ppo_phase_v1/src/wlr50_clean/ppo/semantic_rear_owner_actor.py",
+      "bytes": 3578,
+      "sha256": "3e17666f86f483af5755266f1f03078765e6c8f8fb7b4f16e5140fca243014bc"
+    },
+    {
+      "file": "semantic_rr_capture_local_actor.py",
+      "project_relative_path": "wlr_robot/fsm_base_on_recording_ppo_phase_v1/src/wlr50_clean/ppo/semantic_rr_capture_local_actor.py",
+      "bytes": 24971,
+      "sha256": "dabad9ceca1dea84de9f28604476db26e51377322fca446ac3d831fec0bf0a3b"
+    },
+    {
+      "file": "semantic_post_rr_front_prep_actor.py",
+      "project_relative_path": "wlr_robot/fsm_base_on_recording_ppo_phase_v1/src/wlr50_clean/ppo/semantic_post_rr_front_prep_actor.py",
+      "bytes": 13928,
+      "sha256": "66924fab39709ee965e2ee2e47805327b613e75783b7e5454925bcbbdf59ba57"
+    },
+    {
+      "file": "semantic_history_actor.py",
+      "project_relative_path": "wlr_robot/fsm_base_on_recording_ppo_phase_v1/src/wlr50_clean/ppo/semantic_history_actor.py",
+      "bytes": 23480,
+      "sha256": "861d21c9d956fe3ff59980a65cc8aca6dc8ee40fc4e132e889fd379a2f6e7d26"
+    },
+    {
+      "file": "semantic_finish_advance_actor.py",
+      "project_relative_path": "wlr_robot/fsm_base_on_recording_ppo_phase_v1/src/wlr50_clean/ppo/semantic_finish_advance_actor.py",
+      "bytes": 11907,
+      "sha256": "052415876bccdad89072a2120675517cede0a255374e6dc95715bf3747a16abb"
+    },
+    {
+      "file": "semantic_fl_forward_actor.py",
+      "project_relative_path": "wlr_robot/fsm_base_on_recording_ppo_phase_v1/src/wlr50_clean/ppo/semantic_fl_forward_actor.py",
+      "bytes": 20277,
+      "sha256": "e8deba33ee434e960c9c0df121473132c24304ad1d2e3938dae3ca4d27b5f199"
+    },
+    {
+      "file": "semantic_fl_prior_retirement_actor.py",
+      "project_relative_path": "wlr_robot/fsm_base_on_recording_ppo_phase_v1/src/wlr50_clean/ppo/semantic_fl_prior_retirement_actor.py",
+      "bytes": 8399,
+      "sha256": "c290cc30fa26e87316659e17c9c843b5469f906673ca0fc7fd8144daa4e91522"
+    },
+    {
+      "file": "semantic_fl_prior_retirement.py",
+      "project_relative_path": "wlr_robot/fsm_base_on_recording_ppo_phase_v1/src/wlr50_clean/ppo/semantic_fl_prior_retirement.py",
+      "bytes": 29425,
+      "sha256": "a1b940de48b0abe6e500d387e7abb99b6e3cd8e1629ea4e617cab6b253aed28b"
+    },
+    {
+      "file": "semantic_fl_forward_task.py",
+      "project_relative_path": "wlr_robot/fsm_base_on_recording_ppo_phase_v1/src/wlr50_clean/ppo/semantic_fl_forward_task.py",
+      "bytes": 15463,
+      "sha256": "2b66016642c80b55f98b38971ebc89f1854dd008036ef560f1efa6464208008a"
+    },
+    {
+      "file": "action_projection.py",
+      "project_relative_path": "wlr_robot/fsm_base_on_recording_ppo_phase_v1/src/wlr50_clean/ppo/action_projection.py",
+      "bytes": 28908,
+      "sha256": "bb13caa8053d60cb00f5a08eee4e8c5113bcb8be0f0a6ee585177979b7d6aa75"
+    },
+    {
+      "file": "semantic_headroom.py",
+      "project_relative_path": "wlr_robot/fsm_base_on_recording_ppo_phase_v1/src/wlr50_clean/ppo/semantic_headroom.py",
+      "bytes": 7489,
+      "sha256": "e1ea16538d516425c73acd8f49bada84609fc2708f3dfef6e9ca434cd6d13147"
+    },
+    {
+      "file": "semantic_residual_adapter.py",
+      "project_relative_path": "wlr_robot/fsm_base_on_recording_ppo_phase_v1/src/wlr50_clean/ppo/semantic_residual_adapter.py",
+      "bytes": 31745,
+      "sha256": "87b1898223508493bf570b0da647b8f16d2d16df4f2b694e4ffff984ed88b2e2"
+    }
+  ]
+}

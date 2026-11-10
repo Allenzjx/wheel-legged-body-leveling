@@ -1,0 +1,177 @@
+{
+  "schema": "wheel-legged-body-leveling.50mm-training.v1",
+  "scope": "Four learned components of the full-traversal 50 mm composite controller",
+  "checkpoint_sha256": "34537113f574361df736a1aafb15bca1ef5afb01614d3a79998b35b0fea102e6",
+  "interface": {
+    "observations": 536,
+    "raw_actions": 12,
+    "joint_request_coordinates": 8,
+    "wheel_request_coordinates": 4,
+    "policy_frequency_hz": 15,
+    "physics_frequency_hz": 120,
+    "actor_critic_observation_scope": "Same simulator-derived vector; explicit history and layout extensions; no privileged-critic-only split",
+    "joint_units": "degrees in controller coordinates",
+    "wheel_units": "rad/s in controller coordinates",
+    "evaluation": "Deterministic actions, fixed parameters, no online optimizer updates"
+  },
+  "stages": [
+    {
+      "name": "Early motion",
+      "checkpoint": "checkpoint_rear_owner_CP225280_gf6d1d2df8d87.pt",
+      "actor": {
+        "input_values": 439,
+        "hidden_units": [
+          256,
+          256
+        ],
+        "activation": "ELU",
+        "output_values": 24,
+        "output_mean_count": 12,
+        "output_log_std_count": 12
+      },
+      "counts": {
+        "cumulative_policy_decisions": 225280,
+        "ppo_updates": 1725,
+        "adam_steps": 34500
+      },
+      "collection": "128 decisions per environment; most runs use one environment, while semantic-v2 includes eight-environment runs",
+      "discount_and_gae": {
+        "initial": [
+          0.995,
+          0.95
+        ],
+        "later": [
+          0.9985,
+          0.99
+        ]
+      },
+      "entropy_coefficient": 0.005,
+      "saved_adam_learning_rate": 1e-05,
+      "checkpoint_sha256": "fbe28e3718a5796afc2271e7b10aa04017369593b5c62e0bde1973a20f68032f",
+      "source_manifest_sha256": "f501b7a735c0aaa42be00114e09f80d46f7f009d7717aa416fc30ad3cc837d6d"
+    },
+    {
+      "name": "Rear-right transfer",
+      "checkpoint": "checkpoint_CP231936_local006656_aux000096_continuous465_v3_g6b2d0df71cb8.pt",
+      "actor": {
+        "input_values": 465,
+        "hidden_units": [
+          128,
+          128
+        ],
+        "activation": "ELU",
+        "output_values": 24,
+        "retained_earlier_actor": true
+      },
+      "counts": {
+        "local_policy_decisions": 6656,
+        "ppo_updates": 13,
+        "adam_steps": 260,
+        "excluded_frozen_prefix_decisions": 31911
+      },
+      "rollout_decisions": 512,
+      "environments": 1,
+      "discount": 0.9985,
+      "gae_lambda": 0.99,
+      "entropy_coefficient": 0.001,
+      "saved_adam_learning_rate": 3.375e-05,
+      "checkpoint_sha256": "8ecfebbb4262234bafadabaab67f33c06e2ea7a6dc35cd9bc37d98099f20f221",
+      "source_manifest_sha256": "d289e1735e7dc0f6d4a5e2274e6c935b6a282baf9ad1efa61e1be88b0607d1cd"
+    },
+    {
+      "name": "Following transfer",
+      "checkpoint": "checkpoint_CP232960_postRR000512_g04a8001b901f.pt",
+      "actor": {
+        "input_values": 490,
+        "hidden_units": [
+          128,
+          128
+        ],
+        "activation": "ELU",
+        "output_values": 24,
+        "retained_earlier_actor": true
+      },
+      "counts": {
+        "new_policy_decisions": 512,
+        "ppo_updates": 1,
+        "adam_steps": 20,
+        "excluded_frozen_prefix_decisions": 4145
+      },
+      "rollout_decisions": 512,
+      "environments": 1,
+      "discount": 0.9985,
+      "gae_lambda": 0.99,
+      "entropy_coefficient": 0.001,
+      "saved_adam_learning_rate": 1e-05,
+      "checkpoint_sha256": "b24126a4df16c780f5ce65039ac4fce0c03c7d57c838b8ce5fc75fc477fa7bd9",
+      "source_manifest_sha256": "f292d84bfa2f302373360855711dadd73bc4ea4e5c556ac8e1562dcee5cc1e45"
+    },
+    {
+      "name": "Front-left wheel refinement",
+      "checkpoint": "checkpoint_CP233547_FL000587_data002048_gd226fafd8bc0.pt",
+      "actor": {
+        "input_values": 535,
+        "new_actor_parameters": 2,
+        "new_parameters": [
+          "conditional_mean_offset",
+          "log_standard_deviation"
+        ],
+        "active_stochastic_coordinates": 1,
+        "retained_earlier_actor": true
+      },
+      "counts": {
+        "stored_policy_decisions": 2048,
+        "actor_eligible_decisions": 587,
+        "critic_only_decisions": 1461,
+        "ppo_updates": 4,
+        "adam_steps": 80,
+        "actor_adam_steps": 60,
+        "excluded_frozen_prefix_decisions": 1938
+      },
+      "rollout_decisions": 512,
+      "environments": 1,
+      "discount": 0.9985,
+      "gae_lambda": 0.99,
+      "entropy_coefficient": 0.001,
+      "saved_adam_learning_rate": 0.01,
+      "checkpoint_sha256": "39c35998298fe25541f7c6595076486ea629cbf8f5b4d833f2bce3cce1810458",
+      "source_manifest_sha256": "e28866bd440c629c94d1bf1b6f727bba9ee83983c77a26f3b978a7b6a3f83785"
+    }
+  ],
+  "common_ppo": {
+    "probability_ratio_clip": 0.2,
+    "epochs": 5,
+    "minibatches": 4,
+    "optimizer": "Adam",
+    "learning_rate_schedule": "adaptive",
+    "desired_kl": 0.01,
+    "desired_kl_role": "Learning-rate adaptation; not a universal early-stop threshold",
+    "gradient_norm_limit": 1.0,
+    "value_loss_coefficient": 1.0,
+    "clipped_value_loss": true,
+    "raw_action_likelihood": "Stored Gaussian requests before physical projection"
+  },
+  "counting_notes": [
+    "Stage counters have distinct cumulative or local scopes and must not be summed as a uniform training run.",
+    "A separate 512-decision branch initializes the following-transfer critic; it is not a further selected rear-right actor update.",
+    "Auxiliary fitting and interface migrations have no PPO update credit.",
+    "The evaluated 536-value interface retains earlier actor tensors and adds no new PPO update after the front-left component.",
+    "Saved learning rates are checkpoint snapshots, not fixed rates over each stage.",
+    "Stage-dependent rewards and observation layouts prevent a single comparable learning curve."
+  ],
+  "comparison_video": {
+    "relative_path": "../../public/media/comparison-50mm-nominal.mp4",
+    "case_id": "grid_d1_mu1",
+    "obstacle_height_mm": 50,
+    "requested_initial_gap_mm": 218.4933173179947,
+    "friction_multiplier": 1.0,
+    "duration_seconds": 95.66666666666667,
+    "frame_rate": 15,
+    "physical_playback_speed": 1,
+    "sha256": "38eeafd24db66fdbcc319ab5a7a2ed3cc4bb1967e140f5ac15d18125ef77e892",
+    "ppo_native_episode_seconds": 93.6,
+    "recorded_replay_native_episode_seconds": 88.73333333333333,
+    "end_behavior": "Earlier-ending method holds its final measured pose; final pair holds for two seconds.",
+    "scope": "Selected nominal demonstration; separate from training and not a completion-rate estimate."
+  }
+}

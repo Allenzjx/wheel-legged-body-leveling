@@ -37,10 +37,12 @@ node scripts/serve.mjs
 ## 日常维护
 
 - `content/site.json`：项目身份、视频路径、条件、说明，以及待补录的 `recordingDemo`。
-- `content/training.json`：50 mm 与 100 mm 使用一致字段结构的真实训练阶段。
+- `content/method50.json`：公开页面的 50 mm 全程越障方法、网络、状态动作、训练阶段和分阶段优化配置。
+- `content/training.json`：历史训练整理记录；不直接生成当前网页。
+- `research/50mm/`：英文全程 50 mm 方法报告、模型权重与名义对比视频身份；网页唯一的 GitHub 链接指向这里。
 - `research/current-results.json`：当前正文采用的已核实结果、适用范围和数据来源。
 - `research/README.md`：数据口径、模型、视频和历史记录说明。
-- `scripts/build-report.mjs`：页面结构及较长文案；`scripts/build.mjs` 是构建入口。
+- `scripts/build-report.mjs`：页面结构及较长文案；`scripts/render-method50.mjs` 生成 50 mm 方法章节；`scripts/build.mjs` 是构建入口。
 - `public/academic.css`、`public/app.js`：视觉样式和浏览器交互。
 - `public/media/`：CAD、UI 截图、视频和封面。
 - `research/archive/2026-10-31/`：历史科研图、CSV、方法配置与来源信息，仅在 GitHub 供查阅，不进入网站构建输出。

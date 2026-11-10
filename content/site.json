@@ -3,15 +3,65 @@
   "author": "Junxian Zhu",
   "affiliation": "Mechanical Engineering and Materials Science · Duke University",
   "advisor": "Dr. Oca",
-  "repository": "https://github.com/Allenzjx/wheel-legged-body-leveling",
-  "updated": "3 November 2026",
+  "updated": "10 November 2026",
   "intro": "Recorded motion provides reference joint and wheel commands. Residual PPO uses robot-state feedback to adjust these commands during obstacle traversal, with body leveling evaluated on 50 mm and 100 mm steps.",
   "recordingDemo": null,
   "videos": [
-    {"id":"nominal100","category":"100 mm","title":"100 mm · nominal traversal","src":"media/comparison-100mm-nominal.mp4","poster":"media/comparison-100mm-nominal.jpg","duration":"1:28","case":"grid_d1_mu1","conditions":"100 mm step · 218.5 mm initial gap · friction multiplier 1.000","model":"Recorded Replay / Residual PPO","watch":"Body inclination during wheel unloading, transfer and reloading.","result":"Both controllers complete the traversal. The PPO sequence exhibits lower sustained chassis inclination during the central part of the crossing; posture changes remain during subsequent wheel transfers.","outcome":"Both complete"},
-    {"id":"nominal50","category":"50 mm","title":"50 mm · nominal traversal","src":"media/comparison-50mm-nominal.mp4","poster":"media/comparison-50mm-nominal.jpg","duration":"1:36","case":"grid_d1_mu1","conditions":"50 mm step · 218.5 mm initial gap · friction multiplier 1.000","model":"Recorded Replay / Residual PPO","watch":"Body posture and wheel contact transitions during the four wheel transfers.","result":"Both controllers complete this nominal traversal. The paired views show the chassis attitude and changing wheel contacts throughout the recorded sequence.","outcome":"Both complete"},
-    {"id":"longer100","category":"100 mm","title":"100 mm · longer approach distance","src":"media/comparison-100mm-longer-gap.mp4","poster":"media/comparison-100mm-longer-gap.jpg","duration":"1:27","case":"grid_d2_mu1","conditions":"100 mm step · 238.5 mm initial gap · friction multiplier 1.000","model":"Recorded Replay / Residual PPO","watch":"Approach motion and wheel transfers with an increased initial gap.","result":"Both controllers complete this condition. The initial gap is 20 mm greater than in the nominal traversal; conditions are matched between the two views within this clip.","outcome":"Both complete"},
-    {"id":"failure100","category":"Failure","title":"100 mm · body-collision termination","src":"media/comparison-100mm-failure.mp4","poster":"media/comparison-100mm-failure.jpg","duration":"1:29","case":"random_30","conditions":"100 mm step · 207.7 mm initial gap · friction multiplier 1.176","model":"Recorded Replay / Residual PPO","watch":"The PPO collision and the subsequent completion of Recorded Replay.","result":"The PPO trial terminates with a logged body collision. Recorded Replay completes the same condition. The earlier-ending view holds its final measured pose while the other trial continues.","outcome":"PPO collision · Replay completes"}
+    {
+      "id": "nominal100",
+      "category": "100 mm",
+      "title": "100 mm · nominal traversal",
+      "src": "media/comparison-100mm-nominal.mp4",
+      "poster": "media/comparison-100mm-nominal.jpg",
+      "duration": "1:28",
+      "case": "grid_d1_mu1",
+      "conditions": "100 mm step · 218.5 mm initial gap · friction multiplier 1.000",
+      "model": "Recorded Replay / Residual PPO",
+      "watch": "Body inclination during wheel unloading, transfer and reloading.",
+      "result": "Both controllers complete the traversal. The PPO sequence exhibits lower sustained chassis inclination during the central part of the crossing; posture changes remain during subsequent wheel transfers.",
+      "outcome": "Both complete"
+    },
+    {
+      "id": "nominal50",
+      "category": "50 mm",
+      "title": "50 mm · nominal traversal",
+      "src": "media/comparison-50mm-nominal.mp4",
+      "poster": "media/comparison-50mm-nominal.jpg",
+      "duration": "1:36",
+      "case": "grid_d1_mu1",
+      "conditions": "50 mm step · 218.5 mm initial gap · friction multiplier 1.000",
+      "model": "Recorded Replay / Residual PPO",
+      "watch": "Body posture and wheel contact transitions during the four wheel transfers.",
+      "result": "Both controllers complete this nominal traversal. The paired views show the chassis attitude and changing wheel contacts throughout the recorded sequence.",
+      "outcome": "Both complete"
+    },
+    {
+      "id": "longer100",
+      "category": "100 mm",
+      "title": "100 mm · longer approach distance",
+      "src": "media/comparison-100mm-longer-gap.mp4",
+      "poster": "media/comparison-100mm-longer-gap.jpg",
+      "duration": "1:27",
+      "case": "grid_d2_mu1",
+      "conditions": "100 mm step · 238.5 mm initial gap · friction multiplier 1.000",
+      "model": "Recorded Replay / Residual PPO",
+      "watch": "Approach motion and wheel transfers with an increased initial gap.",
+      "result": "Both controllers complete this condition. The initial gap is 20 mm greater than in the nominal traversal; conditions are matched between the two views within this clip.",
+      "outcome": "Both complete"
+    },
+    {
+      "id": "failure100",
+      "category": "Failure",
+      "title": "100 mm · body-collision termination",
+      "src": "media/comparison-100mm-failure.mp4",
+      "poster": "media/comparison-100mm-failure.jpg",
+      "duration": "1:29",
+      "case": "random_30",
+      "conditions": "100 mm step · 207.7 mm initial gap · friction multiplier 1.176",
+      "model": "Recorded Replay / Residual PPO",
+      "watch": "The PPO collision and the subsequent completion of Recorded Replay.",
+      "result": "The PPO trial terminates with a logged body collision. Recorded Replay completes the same condition. The earlier-ending view holds its final measured pose while the other trial continues.",
+      "outcome": "PPO collision · Replay completes"
+    }
   ]
 }
-

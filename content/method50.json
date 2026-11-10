@@ -1,0 +1,37 @@
+{
+  "title": "50 mm Residual PPO Training",
+  "overview": "The 50 mm controller combines a recorded traversal reference with state-dependent corrections. Training develops the crossing sequence through successive support transfers. Earlier learned components retain their weights while new components learn local corrections; the complete controller remains responsive to measured state throughout execution.",
+  "observations": [
+    {"name":"Body motion","description":"Chassis orientation, projected gravity, roll and pitch, angular motion, and linear motion describe body posture and movement."},
+    {"name":"Joint and wheel state","description":"Eight leg-joint positions and velocities, four wheel velocities, and reference and applied targets describe the actuator state."},
+    {"name":"Contact and support","description":"Wheel contacts, normal forces, load fractions, support count and geometric support margin describe the support configuration."},
+    {"name":"Obstacle geometry","description":"Wheel geometry relative to the step, wheel motion and projected centre-of-mass information describe the crossing geometry."},
+    {"name":"Traversal context","description":"Motion phase, elapsed time, physical progress and lift, crossing and placement events identify the current part of the task."},
+    {"name":"Command history","description":"A finite history of nominal commands, residual requests and applied targets supplies recent control context to the feed-forward policy."}
+  ],
+  "architecture": [
+    ["Retained early-motion actor", "Two hidden layers of 256 units; ELU activation", "12 Gaussian means and 12 log-standard-deviation outputs"],
+    ["Transfer actors", "Two hidden layers of 128 units; ELU activation", "12 residual coordinates in the active transfer interval"],
+    ["Front-left wheel component", "One Gaussian correction with a learned mean and log standard deviation", "One eligible wheel-speed correction; the other coordinates retain the preceding policy"]
+  ],
+  "architectureNote": "The controller composes retained actors with local refinements. Observation layouts expand between stages; the components do not share one fixed input dimension. The actor and critic use measured simulator observations, and the critic supplies the return estimate during training.",
+  "stages": [
+    {"name":"Early motion","objective":"Learn forward progress, then introduce limited body-posture and obstacle-gap terms.","execution":"Training starts at the beginning of the 50 mm task and develops the motion needed to reach later wheel transfers.","handoff":"The selected early actor is retained with fixed weights for subsequent training."},
+    {"name":"Rear-right transfer","objective":"Continue rear-right contact and subsequent rear-left transfer toward traversal completion.","execution":"The retained actor reaches the transfer interval; the new actor learns corrections within that interval. Rear-right touchdown is an intermediate event.","handoff":"The earlier actor remains fixed while the transfer component is optimized."},
+    {"name":"Following transfer","objective":"Coordinate front-leg preparation, support transfer, and rear-left lift and placement.","execution":"Training continues beyond rear-right transfer, with all 12 correction coordinates available after activation.","handoff":"The preceding composite actor is retained while the new transfer component learns."},
+    {"name":"Front-left wheel refinement","objective":"Encourage forward travel and reduce reverse commands or loaded counter-rotation without progress.","execution":"A local Gaussian component adjusts the front-left wheel in its eligible control interval. The preceding joint and wheel policy remains active.","handoff":"Actor updates use eligible samples; other stored decisions can contribute to value estimation. The selected components are then evaluated with fixed weights."}
+  ],
+  "optimization": [
+    ["Policy / physics frequency", "15 Hz / 120 Hz", "15 Hz / 120 Hz"],
+    ["Rollout length", "128 policy decisions in selected early rollouts", "512 policy decisions; one environment"],
+    ["PPO probability-ratio clip", "0.2", "0.2"],
+    ["Update schedule", "5 epochs; 4 minibatches", "5 epochs; 4 minibatches"],
+    ["Discount factor / GAE", "0.995 / 0.95 in initial early training", "0.9985 / 0.99"],
+    ["Optimizer", "Adam; adaptive learning rate", "Adam; adaptive learning rate"],
+    ["Adaptive-rate target KL", "0.01", "0.01"],
+    ["Gradient-norm limit", "1.0", "1.0"]
+  ],
+  "optimizationNote": "Settings are reported by training stage. Reward definitions, observation layouts and learning rates change during development, so the stages are not one stationary optimization run. The target KL governs the adaptive learning-rate schedule.",
+  "reward": "The reward combines traversal progress and completion with stage-specific posture, contact and motion-quality terms. Transfer stages reward wheel lift, crossing and placement events. The front-left refinement adds forward-displacement reward and penalties for reverse commands or loaded counterdrive without progress. A wheel-contact event is distinct from completion of the crossing.",
+  "evaluation": "Evaluation executes the selected composite controller with deterministic actions and fixed weights. Recorded Replay and Residual PPO start from separate resets with matched task conditions. The evaluation tracks body attitude, wheel contacts and traversal completion; demonstration clips are separate from training rollouts."
+}

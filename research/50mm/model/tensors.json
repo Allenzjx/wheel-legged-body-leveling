@@ -1,0 +1,381 @@
+{
+  "schema": "wheel-legged-body-leveling.policy-tensors.v1",
+  "source": {
+    "checkpoint_name": "checkpoint_CP233547_FL000587_data002048_ret000000_ga2e6cc5fef6d.pt",
+    "checkpoint_sha256": "34537113f574361df736a1aafb15bca1ef5afb01614d3a79998b35b0fea102e6",
+    "checkpoint_bytes": 2878347,
+    "sidecar_name": "checkpoint_CP233547_FL000587_data002048_ret000000_ga2e6cc5fef6d_manifest.json",
+    "sidecar_sha256": "d6f833ecbc3242341ab5b1781330ec934ef4462d959a58227f0fc86fd1d8fca7"
+  },
+  "archive": "composite-policy.npz",
+  "archive_sha256": "a3719a14def421e9801ffa170e4f76df91cf9a19e63cbfa715a6587c67c571d3",
+  "archive_bytes": 1879840,
+  "array_format": "Numeric NPZ; load with allow_pickle=False",
+  "tensor_count": 32,
+  "tensors": [
+    {
+      "key": "actor::mlp.mean_delta",
+      "group": "actor",
+      "name": "mlp.mean_delta",
+      "shape": [],
+      "dtype": "float32",
+      "elements": 1,
+      "sha256_raw_c_bytes": "819e651708922a41949740b3bc8a273e2ee26983b4cb39a8a2d61d10940e661b"
+    },
+    {
+      "key": "actor::mlp.log_std",
+      "group": "actor",
+      "name": "mlp.log_std",
+      "shape": [],
+      "dtype": "float32",
+      "elements": 1,
+      "sha256_raw_c_bytes": "7a4f05a6b9e687fde5d8d8b3ad47549da2973a7e1e78c3e5888bb4b7ab242ea7"
+    },
+    {
+      "key": "actor::frozen_A.mlp.0.weight",
+      "group": "actor",
+      "name": "frozen_A.mlp.0.weight",
+      "shape": [
+        128,
+        531
+      ],
+      "dtype": "float32",
+      "elements": 67968,
+      "sha256_raw_c_bytes": "b1cc0a79fec150c749e128016c76e0ea00fa1559062a1eba002fa136501c63de"
+    },
+    {
+      "key": "actor::frozen_A.mlp.0.bias",
+      "group": "actor",
+      "name": "frozen_A.mlp.0.bias",
+      "shape": [
+        128
+      ],
+      "dtype": "float32",
+      "elements": 128,
+      "sha256_raw_c_bytes": "6de35377afa0ea88fb07d7099bb677cde15d4196cfd78f6276617c820a9f050d"
+    },
+    {
+      "key": "actor::frozen_A.mlp.2.weight",
+      "group": "actor",
+      "name": "frozen_A.mlp.2.weight",
+      "shape": [
+        128,
+        128
+      ],
+      "dtype": "float32",
+      "elements": 16384,
+      "sha256_raw_c_bytes": "075fc3d05dacf512a25e0dd8f8f4561d3764b6bcc01df4f04cc49c6998c44f07"
+    },
+    {
+      "key": "actor::frozen_A.mlp.2.bias",
+      "group": "actor",
+      "name": "frozen_A.mlp.2.bias",
+      "shape": [
+        128
+      ],
+      "dtype": "float32",
+      "elements": 128,
+      "sha256_raw_c_bytes": "e445ebe85edcb86ee2af055c0816528a39e43b27a054ed2c7ee614164d0a4671"
+    },
+    {
+      "key": "actor::frozen_A.mlp.4.weight",
+      "group": "actor",
+      "name": "frozen_A.mlp.4.weight",
+      "shape": [
+        24,
+        128
+      ],
+      "dtype": "float32",
+      "elements": 3072,
+      "sha256_raw_c_bytes": "f3cc103136423a57975750907ebc1d367e2985ac6338976d4d5a439f50323f4a"
+    },
+    {
+      "key": "actor::frozen_A.mlp.4.bias",
+      "group": "actor",
+      "name": "frozen_A.mlp.4.bias",
+      "shape": [
+        24
+      ],
+      "dtype": "float32",
+      "elements": 24,
+      "sha256_raw_c_bytes": "686578bcdd3e15aee4da3a0575c7ab93d6d1061443264faaa421d0e6bb2ee450"
+    },
+    {
+      "key": "actor::frozen_A.frozen_accepted.mlp.0.weight",
+      "group": "actor",
+      "name": "frozen_A.frozen_accepted.mlp.0.weight",
+      "shape": [
+        128,
+        490
+      ],
+      "dtype": "float32",
+      "elements": 62720,
+      "sha256_raw_c_bytes": "3a58c36efe82bd5d0d1c88f90688213f782925eb16bdf624eb0f438aa1aa2440"
+    },
+    {
+      "key": "actor::frozen_A.frozen_accepted.mlp.0.bias",
+      "group": "actor",
+      "name": "frozen_A.frozen_accepted.mlp.0.bias",
+      "shape": [
+        128
+      ],
+      "dtype": "float32",
+      "elements": 128,
+      "sha256_raw_c_bytes": "dbcfccae776ae21f925abd2d14927b26292f961929469f70e55022ede51f148b"
+    },
+    {
+      "key": "actor::frozen_A.frozen_accepted.mlp.2.weight",
+      "group": "actor",
+      "name": "frozen_A.frozen_accepted.mlp.2.weight",
+      "shape": [
+        128,
+        128
+      ],
+      "dtype": "float32",
+      "elements": 16384,
+      "sha256_raw_c_bytes": "566bd86521819a62af85d29921542fce752b722ad7c2924d944be4ad64a64501"
+    },
+    {
+      "key": "actor::frozen_A.frozen_accepted.mlp.2.bias",
+      "group": "actor",
+      "name": "frozen_A.frozen_accepted.mlp.2.bias",
+      "shape": [
+        128
+      ],
+      "dtype": "float32",
+      "elements": 128,
+      "sha256_raw_c_bytes": "8d80303dc4f6aa0df4d88193d309148676b5256df44aca6630993ff30badc42b"
+    },
+    {
+      "key": "actor::frozen_A.frozen_accepted.mlp.4.weight",
+      "group": "actor",
+      "name": "frozen_A.frozen_accepted.mlp.4.weight",
+      "shape": [
+        24,
+        128
+      ],
+      "dtype": "float32",
+      "elements": 3072,
+      "sha256_raw_c_bytes": "46d95783cc9a54c63df2f1460343ba73422453b5292f90d8e8c7f5676582c71d"
+    },
+    {
+      "key": "actor::frozen_A.frozen_accepted.mlp.4.bias",
+      "group": "actor",
+      "name": "frozen_A.frozen_accepted.mlp.4.bias",
+      "shape": [
+        24
+      ],
+      "dtype": "float32",
+      "elements": 24,
+      "sha256_raw_c_bytes": "4168e6a7b76c68f3b7d16232666b98d9f0be5041b6d716433253d0aab5c5bb48"
+    },
+    {
+      "key": "actor::frozen_A.frozen_accepted.frozen_anchor.mlp.0.weight",
+      "group": "actor",
+      "name": "frozen_A.frozen_accepted.frozen_anchor.mlp.0.weight",
+      "shape": [
+        128,
+        465
+      ],
+      "dtype": "float32",
+      "elements": 59520,
+      "sha256_raw_c_bytes": "701fc896f9c44c95fead629dc586a19c1f94023faaa373331490d06bb696f2a3"
+    },
+    {
+      "key": "actor::frozen_A.frozen_accepted.frozen_anchor.mlp.0.bias",
+      "group": "actor",
+      "name": "frozen_A.frozen_accepted.frozen_anchor.mlp.0.bias",
+      "shape": [
+        128
+      ],
+      "dtype": "float32",
+      "elements": 128,
+      "sha256_raw_c_bytes": "ab9c019c35884c6e952f110e16febd21ee8cae293234750321b840075ca08dc0"
+    },
+    {
+      "key": "actor::frozen_A.frozen_accepted.frozen_anchor.mlp.2.weight",
+      "group": "actor",
+      "name": "frozen_A.frozen_accepted.frozen_anchor.mlp.2.weight",
+      "shape": [
+        128,
+        128
+      ],
+      "dtype": "float32",
+      "elements": 16384,
+      "sha256_raw_c_bytes": "8395288ba3c29888407a819b3702fa2de658eb2b9c7688a9130bc63145dc7f30"
+    },
+    {
+      "key": "actor::frozen_A.frozen_accepted.frozen_anchor.mlp.2.bias",
+      "group": "actor",
+      "name": "frozen_A.frozen_accepted.frozen_anchor.mlp.2.bias",
+      "shape": [
+        128
+      ],
+      "dtype": "float32",
+      "elements": 128,
+      "sha256_raw_c_bytes": "e67434ad3b337fb758dbda36531f666f27867fb2c25374dbd5fd3d410f10a5db"
+    },
+    {
+      "key": "actor::frozen_A.frozen_accepted.frozen_anchor.mlp.4.weight",
+      "group": "actor",
+      "name": "frozen_A.frozen_accepted.frozen_anchor.mlp.4.weight",
+      "shape": [
+        24,
+        128
+      ],
+      "dtype": "float32",
+      "elements": 3072,
+      "sha256_raw_c_bytes": "da03275091ff676f8935cb7ebf86b50fa97543b769f8b2d9ff302fbd549c4aec"
+    },
+    {
+      "key": "actor::frozen_A.frozen_accepted.frozen_anchor.mlp.4.bias",
+      "group": "actor",
+      "name": "frozen_A.frozen_accepted.frozen_anchor.mlp.4.bias",
+      "shape": [
+        24
+      ],
+      "dtype": "float32",
+      "elements": 24,
+      "sha256_raw_c_bytes": "6610465fb985788db4d41c0d80ab041baf601eab0eab142439626f8f8371d8ff"
+    },
+    {
+      "key": "actor::frozen_A.frozen_accepted.frozen_anchor.frozen_prior.mlp.0.weight",
+      "group": "actor",
+      "name": "frozen_A.frozen_accepted.frozen_anchor.frozen_prior.mlp.0.weight",
+      "shape": [
+        256,
+        439
+      ],
+      "dtype": "float32",
+      "elements": 112384,
+      "sha256_raw_c_bytes": "dba0e3cbda4e75b83c2a4c7fce0c667752020b6f42f6b38cc25ddafc711f6382"
+    },
+    {
+      "key": "actor::frozen_A.frozen_accepted.frozen_anchor.frozen_prior.mlp.0.bias",
+      "group": "actor",
+      "name": "frozen_A.frozen_accepted.frozen_anchor.frozen_prior.mlp.0.bias",
+      "shape": [
+        256
+      ],
+      "dtype": "float32",
+      "elements": 256,
+      "sha256_raw_c_bytes": "bbd30a4619ef7be74e66b59046e9ec3ce0f871d5a73c6e950d18474273a23b88"
+    },
+    {
+      "key": "actor::frozen_A.frozen_accepted.frozen_anchor.frozen_prior.mlp.2.weight",
+      "group": "actor",
+      "name": "frozen_A.frozen_accepted.frozen_anchor.frozen_prior.mlp.2.weight",
+      "shape": [
+        256,
+        256
+      ],
+      "dtype": "float32",
+      "elements": 65536,
+      "sha256_raw_c_bytes": "14d88d60cb9259edaaad6ee04cf80df8f9f4c71b178ba56eefd8d796e806c891"
+    },
+    {
+      "key": "actor::frozen_A.frozen_accepted.frozen_anchor.frozen_prior.mlp.2.bias",
+      "group": "actor",
+      "name": "frozen_A.frozen_accepted.frozen_anchor.frozen_prior.mlp.2.bias",
+      "shape": [
+        256
+      ],
+      "dtype": "float32",
+      "elements": 256,
+      "sha256_raw_c_bytes": "57ddd3cf38aac3bf962f66dad9a7c4a49c349ef0e0ef5ec699686e574b3b6169"
+    },
+    {
+      "key": "actor::frozen_A.frozen_accepted.frozen_anchor.frozen_prior.mlp.4.weight",
+      "group": "actor",
+      "name": "frozen_A.frozen_accepted.frozen_anchor.frozen_prior.mlp.4.weight",
+      "shape": [
+        24,
+        256
+      ],
+      "dtype": "float32",
+      "elements": 6144,
+      "sha256_raw_c_bytes": "e14a438211ce7b6239a8a3271dc1eb4d14c2f0bb52697890894d121aafb23b52"
+    },
+    {
+      "key": "actor::frozen_A.frozen_accepted.frozen_anchor.frozen_prior.mlp.4.bias",
+      "group": "actor",
+      "name": "frozen_A.frozen_accepted.frozen_anchor.frozen_prior.mlp.4.bias",
+      "shape": [
+        24
+      ],
+      "dtype": "float32",
+      "elements": 24,
+      "sha256_raw_c_bytes": "ce6b3b9cef735d1609f56309932b972d4e87631bfe30e00b76f517d33bb1f135"
+    },
+    {
+      "key": "critic::mlp.0.weight",
+      "group": "critic",
+      "name": "mlp.0.weight",
+      "shape": [
+        128,
+        536
+      ],
+      "dtype": "float32",
+      "elements": 68608,
+      "sha256_raw_c_bytes": "0a5a0b5f2764dd72b89a7a052f7e657359e50e479c0af4e3c0aadc34c10243c3"
+    },
+    {
+      "key": "critic::mlp.0.bias",
+      "group": "critic",
+      "name": "mlp.0.bias",
+      "shape": [
+        128
+      ],
+      "dtype": "float32",
+      "elements": 128,
+      "sha256_raw_c_bytes": "c6cfe7262e2d1d59a0fe83a436dfe55aae8d9263128f0bb6dc5a4cfecad2f88b"
+    },
+    {
+      "key": "critic::mlp.2.weight",
+      "group": "critic",
+      "name": "mlp.2.weight",
+      "shape": [
+        128,
+        128
+      ],
+      "dtype": "float32",
+      "elements": 16384,
+      "sha256_raw_c_bytes": "19222f4c430130def634f4d6f33f228f9a06b898dd7d1ac7841001b85e62ba19"
+    },
+    {
+      "key": "critic::mlp.2.bias",
+      "group": "critic",
+      "name": "mlp.2.bias",
+      "shape": [
+        128
+      ],
+      "dtype": "float32",
+      "elements": 128,
+      "sha256_raw_c_bytes": "7b90ae274ac827f5f5ccbed8a0758882e44cbad72bcc9021c421053220c1416b"
+    },
+    {
+      "key": "critic::mlp.4.weight",
+      "group": "critic",
+      "name": "mlp.4.weight",
+      "shape": [
+        1,
+        128
+      ],
+      "dtype": "float32",
+      "elements": 128,
+      "sha256_raw_c_bytes": "b6f587369b523a298c9bc418441d3a4f01ec536d5b6d510b74a22593af79fdfd"
+    },
+    {
+      "key": "critic::mlp.4.bias",
+      "group": "critic",
+      "name": "mlp.4.bias",
+      "shape": [
+        1
+      ],
+      "dtype": "float32",
+      "elements": 1,
+      "sha256_raw_c_bytes": "dcc2fff0f333b9d817641143f07855f471a3f23f824b53657199cc29219e4279"
+    }
+  ],
+  "scope": "Complete nested actor and critic tensors; optimizer and original metadata omitted."
+}
