@@ -1,0 +1,58 @@
+{
+  "schema": "wlr50.portable-stages.v1",
+  "scope": "Full-traversal 50 mm policy and stage-specific fresh-optimizer continuation",
+  "historical_exact_resume": false,
+  "stage_order": [
+    "early",
+    "rr",
+    "post_rr",
+    "fl"
+  ],
+  "stages": {
+    "early": {
+      "name": "Retained early motion",
+      "model": "checkpoints/early/model.json",
+      "trainable": true,
+      "rollout_steps": 128,
+      "observation_dimension": 439,
+      "source_checkpoint_sha256": "fbe28e3718a5796afc2271e7b10aa04017369593b5c62e0bde1973a20f68032f",
+      "scope": "New continuation of the supplied trained stage; not an automatic from-scratch four-stage reconstruction"
+    },
+    "rr": {
+      "name": "Rear-right transfer",
+      "model": "checkpoints/rr/model.json",
+      "trainable": true,
+      "rollout_steps": 512,
+      "observation_dimension": 465,
+      "source_checkpoint_sha256": "8ecfebbb4262234bafadabaab67f33c06e2ea7a6dc35cd9bc37d98099f20f221",
+      "scope": "New continuation of the supplied trained stage; not an automatic from-scratch four-stage reconstruction"
+    },
+    "post_rr": {
+      "name": "Following transfer",
+      "model": "checkpoints/post_rr/model.json",
+      "trainable": true,
+      "rollout_steps": 512,
+      "observation_dimension": 490,
+      "source_checkpoint_sha256": "b24126a4df16c780f5ce65039ac4fce0c03c7d57c838b8ce5fc75fc477fa7bd9",
+      "scope": "New continuation of the supplied trained stage; not an automatic from-scratch four-stage reconstruction"
+    },
+    "fl": {
+      "name": "Front-left wheel refinement",
+      "model": "checkpoints/fl/model.json",
+      "trainable": true,
+      "rollout_steps": 512,
+      "observation_dimension": 535,
+      "source_checkpoint_sha256": "39c35998298fe25541f7c6595076486ea629cbf8f5b4d833f2bce3cce1810458",
+      "scope": "New continuation of the supplied trained stage; not an automatic from-scratch four-stage reconstruction"
+    },
+    "full": {
+      "name": "Complete 50 mm traversal controller",
+      "model": "checkpoints/full/model.json",
+      "trainable": false,
+      "rollout_steps": 512,
+      "observation_dimension": 536,
+      "source_checkpoint_sha256": "34537113f574361df736a1aafb15bca1ef5afb01614d3a79998b35b0fea102e6",
+      "scope": "Deterministic evaluation of the complete selected composite"
+    }
+  }
+}

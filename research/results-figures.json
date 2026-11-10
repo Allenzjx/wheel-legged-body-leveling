@@ -1,0 +1,307 @@
+{
+  "schema": "wlr.poster-figures.v1",
+  "scope": "Original figure content rendered from the supplied report, with separate mobile panels of the same plots.",
+  "extractions": [
+    {
+      "sourcePdf": "Zhu_Junxian_Fall_2026.pdf",
+      "sourcePdfSha256": "f71674f099a5202993bd663dd244ad16fafa0afd6a9e4496d171447b50c9fb7f",
+      "pageNumber": 1,
+      "pageSizePoints": [
+        3024,
+        2268
+      ],
+      "coordinateOrigin": "top left",
+      "renderDpi": 300,
+      "operation": "Direct rectangular rendering from the supplied PDF. No chart redrawing, numeric changes, recoloring, annotations, or PDF modifications.",
+      "artifacts": [
+        {
+          "path": "../public/figures/poster-results-50mm-nominal.png",
+          "sha256": "dd190a64b7c04d8466e649d71535a068d77ba3b8c628cb2f8c017632e134b965",
+          "bytes": 245977,
+          "sizePixels": [
+            5168,
+            1514
+          ],
+          "requestedBoundsPoints": [
+            1745,
+            305,
+            2985,
+            668
+          ],
+          "renderCropPixels": [
+            7270,
+            1270,
+            5168,
+            1514
+          ],
+          "caption": "50 mm nominal traversal: total body inclination over time, and body roll and pitch RMS by wheel phase. Initial gap: 218.5 mm; friction multiplier: 1.0. Brown: Recorded Replay; blue: Residual PPO.",
+          "legend": "Brown #7A6F66: Recorded Replay; blue #164889: Residual PPO.",
+          "legendEmbedded": true,
+          "review": "Passed visual inspection: titles, axes, tick labels, values, timestamps, all panel/table rows and source captions are retained as applicable. No neighboring method content is included.",
+          "legendNote": "The 50 mm nominal chart crop contains the shared method legend. Repeat the same brown/blue legend in HTML near other crops."
+        },
+        {
+          "path": "../public/figures/poster-results-100mm-nominal.png",
+          "sha256": "637bb9bff614463e889256f63c9b74383bc2ab3d4f40f5273a88fc54c9db7533",
+          "bytes": 260097,
+          "sizePixels": [
+            5168,
+            1563
+          ],
+          "requestedBoundsPoints": [
+            1745,
+            680,
+            2985,
+            1055
+          ],
+          "renderCropPixels": [
+            7270,
+            2833,
+            5168,
+            1563
+          ],
+          "caption": "100 mm nominal traversal: total body inclination over time, and body roll and pitch RMS by wheel phase. Initial gap: 218.5 mm; friction multiplier: 1.0. Brown: Recorded Replay; blue: Residual PPO.",
+          "legend": "Brown #7A6F66: Recorded Replay; blue #164889: Residual PPO.",
+          "legendEmbedded": false,
+          "review": "Passed visual inspection: titles, axes, tick labels, values, timestamps, all panel/table rows and source captions are retained as applicable. No neighboring method content is included.",
+          "legendNote": "The 50 mm nominal chart crop contains the shared method legend. Repeat the same brown/blue legend in HTML near other crops."
+        },
+        {
+          "path": "../public/figures/poster-results-50mm-postures.png",
+          "sha256": "8c2ba483485b0d0ca4d82f91c119026a6d1e394de6fa0b30023364ecec025be5",
+          "bytes": 1028767,
+          "sizePixels": [
+            5168,
+            1114
+          ],
+          "requestedBoundsPoints": [
+            1745,
+            1078,
+            2985,
+            1345
+          ],
+          "renderCropPixels": [
+            7270,
+            4491,
+            5168,
+            1114
+          ],
+          "caption": "50 mm traversal: body-inclination snapshots for the front-right, front-left, rear-right and rear-left wheel-lift phases. Angles and timestamps accompany each pose. Brown: Recorded Replay; blue: Residual PPO.",
+          "legend": "Brown #7A6F66: Recorded Replay; blue #164889: Residual PPO.",
+          "legendEmbedded": false,
+          "review": "Passed visual inspection: titles, axes, tick labels, values, timestamps, all panel/table rows and source captions are retained as applicable. No neighboring method content is included.",
+          "legendNote": "The 50 mm nominal chart crop contains the shared method legend. Repeat the same brown/blue legend in HTML near other crops."
+        },
+        {
+          "path": "../public/figures/poster-results-100mm-postures.png",
+          "sha256": "fa27976f06b8c41d64bc78dd663439798c4c0a8ebaefcd8459bbd2796f8c1141",
+          "bytes": 1052070,
+          "sizePixels": [
+            5168,
+            1064
+          ],
+          "requestedBoundsPoints": [
+            1745,
+            1355,
+            2985,
+            1610
+          ],
+          "renderCropPixels": [
+            7270,
+            5645,
+            5168,
+            1064
+          ],
+          "caption": "100 mm traversal: body-inclination snapshots for the front-right, front-left, rear-right and rear-left wheel-lift phases. Angles and timestamps accompany each pose. Brown: Recorded Replay; blue: Residual PPO.",
+          "legend": "Brown #7A6F66: Recorded Replay; blue #164889: Residual PPO.",
+          "legendEmbedded": false,
+          "review": "Passed visual inspection: titles, axes, tick labels, values, timestamps, all panel/table rows and source captions are retained as applicable. No neighboring method content is included.",
+          "legendNote": "The 50 mm nominal chart crop contains the shared method legend. Repeat the same brown/blue legend in HTML near other crops."
+        },
+        {
+          "path": "../public/figures/poster-results-completion-table.png",
+          "sha256": "c8ee668eed1b10fb24d82338def3764c0ac4d6761c85aa281e3c2e7af18cdf89",
+          "bytes": 167627,
+          "sizePixels": [
+            4064,
+            1022
+          ],
+          "requestedBoundsPoints": [
+            1745,
+            1660,
+            2720,
+            1905
+          ],
+          "renderCropPixels": [
+            7270,
+            6916,
+            4064,
+            1022
+          ],
+          "caption": "Traversal completion, peak body inclination (alpha), and peak completion time at 50 mm and 100 mm step heights, with 39 test conditions per height.",
+          "legend": "Brown #7A6F66: Recorded Replay; blue #164889: Residual PPO.",
+          "legendEmbedded": false,
+          "review": "Passed visual inspection: titles, axes, tick labels, values, timestamps, all panel/table rows and source captions are retained as applicable. No neighboring method content is included.",
+          "legendNote": "The 50 mm nominal chart crop contains the shared method legend. Repeat the same brown/blue legend in HTML near other crops."
+        }
+      ],
+      "visualReviewComplete": true,
+      "sourcePdfUnchanged": true
+    },
+    {
+      "sourcePdf": "Zhu_Junxian_Fall_2026.pdf",
+      "sourcePdfSha256": "f71674f099a5202993bd663dd244ad16fafa0afd6a9e4496d171447b50c9fb7f",
+      "pageNumber": 1,
+      "coordinateOrigin": "top left",
+      "renderDpi": 300,
+      "operation": "Direct rendering of single chart panels. No redrawing or changed content.",
+      "artifacts": [
+        {
+          "path": "../public/figures/poster-results-50mm-inclination.png",
+          "sha256": "3f8d942768dec7a3fde2e9046d8260181b99df26026a2838d1e5c5dc12b91b7e",
+          "sizePixels": [
+            1876,
+            1076
+          ],
+          "bytes": 80483,
+          "requestedBoundsPoints": [
+            1745,
+            410,
+            2195,
+            668
+          ],
+          "renderCropPixels": [
+            7270,
+            1708,
+            1876,
+            1076
+          ],
+          "heightLabelRequiredInHtml": "50 mm",
+          "legendRequiredInHtml": "Brown: Recorded Replay; blue: Residual PPO.",
+          "visualReview": "Passed: full title, degree units, numeric axis ticks (including 100 s), axis/phase labels and plot values retained; no adjacent chart content."
+        },
+        {
+          "path": "../public/figures/poster-results-50mm-roll.png",
+          "sha256": "e89fba205380b02b8050bc61d630a0c8e371ae919e21f5fa5367489d7a21ec4b",
+          "sizePixels": [
+            1601,
+            1076
+          ],
+          "bytes": 67074,
+          "requestedBoundsPoints": [
+            2200,
+            410,
+            2584,
+            668
+          ],
+          "renderCropPixels": [
+            9166,
+            1708,
+            1601,
+            1076
+          ],
+          "heightLabelRequiredInHtml": "50 mm",
+          "legendRequiredInHtml": "Brown: Recorded Replay; blue: Residual PPO.",
+          "visualReview": "Passed: full title, degree units, numeric axis ticks (including 100 s), axis/phase labels and plot values retained; no adjacent chart content."
+        },
+        {
+          "path": "../public/figures/poster-results-50mm-pitch.png",
+          "sha256": "630b128a1f5095b6702dfe01e9b6c9dcfb9b24c0a9288682da27010de0792533",
+          "sizePixels": [
+            1655,
+            1076
+          ],
+          "bytes": 63750,
+          "requestedBoundsPoints": [
+            2588,
+            410,
+            2985,
+            668
+          ],
+          "renderCropPixels": [
+            10783,
+            1708,
+            1655,
+            1076
+          ],
+          "heightLabelRequiredInHtml": "50 mm",
+          "legendRequiredInHtml": "Brown: Recorded Replay; blue: Residual PPO.",
+          "visualReview": "Passed: full title, degree units, numeric axis ticks (including 100 s), axis/phase labels and plot values retained; no adjacent chart content."
+        },
+        {
+          "path": "../public/figures/poster-results-100mm-inclination.png",
+          "sha256": "65f32e94ef00fb90bc97363ba7555d3fe70e73ca1e10a2e481313af62c2dd8bc",
+          "sizePixels": [
+            1876,
+            1150
+          ],
+          "bytes": 84746,
+          "requestedBoundsPoints": [
+            1745,
+            720,
+            2195,
+            996
+          ],
+          "renderCropPixels": [
+            7270,
+            3000,
+            1876,
+            1150
+          ],
+          "heightLabelRequiredInHtml": "100 mm",
+          "legendRequiredInHtml": "Brown: Recorded Replay; blue: Residual PPO.",
+          "visualReview": "Passed: full title, degree units, numeric axis ticks (including 100 s), axis/phase labels and plot values retained; no adjacent chart content."
+        },
+        {
+          "path": "../public/figures/poster-results-100mm-roll.png",
+          "sha256": "20854419cf506452ad25d3265eb1cb2ffbd05126bdd9662b4e42aa86aa7e89f1",
+          "sizePixels": [
+            1601,
+            1150
+          ],
+          "bytes": 68372,
+          "requestedBoundsPoints": [
+            2200,
+            720,
+            2584,
+            996
+          ],
+          "renderCropPixels": [
+            9166,
+            3000,
+            1601,
+            1150
+          ],
+          "heightLabelRequiredInHtml": "100 mm",
+          "legendRequiredInHtml": "Brown: Recorded Replay; blue: Residual PPO.",
+          "visualReview": "Passed: full title, degree units, numeric axis ticks (including 100 s), axis/phase labels and plot values retained; no adjacent chart content."
+        },
+        {
+          "path": "../public/figures/poster-results-100mm-pitch.png",
+          "sha256": "e8ea4eed4df044a8a7c43dc192d0bcea53b33e80be53aa825d3f7cfbe786cbd7",
+          "sizePixels": [
+            1655,
+            1150
+          ],
+          "bytes": 65394,
+          "requestedBoundsPoints": [
+            2588,
+            720,
+            2985,
+            996
+          ],
+          "renderCropPixels": [
+            10783,
+            3000,
+            1655,
+            1150
+          ],
+          "heightLabelRequiredInHtml": "100 mm",
+          "legendRequiredInHtml": "Brown: Recorded Replay; blue: Residual PPO.",
+          "visualReview": "Passed: full title, degree units, numeric axis ticks (including 100 s), axis/phase labels and plot values retained; no adjacent chart content."
+        }
+      ],
+      "sourcePdfUnchanged": true
+    }
+  ]
+}

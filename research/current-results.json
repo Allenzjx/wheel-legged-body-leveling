@@ -1,7 +1,7 @@
 {
-  "schema": "wheel-legged-body-leveling.current-results.v1",
+  "schema": "wheel-legged-body-leveling.retained-evaluation-record.v1",
   "reviewedOn": "2026-11-03",
-  "scope": "Retained simulated evaluations; no physical-robot validation is reported.",
+  "scope": "Retained 100 mm evaluation and video provenance. The website Results figures are defined separately in content/results.json and public/figures; this record is not the source of every plotted result. All evaluations described here are simulations.",
   "commonCompletion100": {
     "conditions": 39,
     "recordedReplay": 31,
@@ -56,6 +56,6 @@
     "Completion, inclination RMS, peak inclination, pitch, and roll are different outcomes.",
     "Nominal, full-episode, per-wheel, paired-success, and holdout analyses must retain their own scope.",
     "Historical 50 mm observations cannot be assigned to the current 100 mm controller.",
-    "Summary numbers without reconciled measurement evidence are not included in the current result."
+    "This historical record retains its original cohort and measurement definitions."
   ]
 }

@@ -1,0 +1,137 @@
+{
+  "scope": "Path-only packaging changes. Original source fingerprints remain in original-source-manifest.json. Historical receipts are provenance, not new validation results.",
+  "files": [
+    {
+      "path": "configs/environment_lock.json",
+      "original_sha256": "602f6e0893d999e5cb078aadf75541234440a3af918dc58e0154e80ff16ea3cb",
+      "packaged_sha256": "16e730da5734c8e77fe0bf3071b96474b9b8c1834b72c844cd346cee3071d1d4",
+      "change": "Relocated machine-specific paths; numerical configuration unchanged."
+    },
+    {
+      "path": "configs/frozen_successful_fsm.yaml",
+      "original_sha256": "a8bf3a5867779fbf64f9fe20fcca9e40a3124e70e808cc174c53aded6c9dfbed",
+      "packaged_sha256": "45e86a4696d3754dab276f9d17b5dac77564bf8a9d4ec91988d755bbd504f372",
+      "change": "Relocated machine-specific paths; numerical configuration unchanged."
+    },
+    {
+      "path": "configs/ppo_phase_effective_entry_v1.json",
+      "original_sha256": "bcd6900bd648698aa2fc44f53fe56607a23d0060d9f2dc4d5d3e2eb4f10c0393",
+      "packaged_sha256": "e6286b8851828b1d189978d90aa3b607619d76b69ebe77e329b1d8d18e1e9cc6",
+      "change": "Relocated machine-specific paths; numerical configuration unchanged."
+    },
+    {
+      "path": "reference/ppo_phase_snapshots/manifest.json",
+      "original_sha256": "0fda5fb29e73315c2b751ee865d138566522bd40e8c3a94bb4daf34acee0557d",
+      "packaged_sha256": "eb8986388977752537026a18a290cb2f4da119238fefad72832be7d6f6824dc1",
+      "change": "Relocated machine-specific paths; numerical configuration unchanged."
+    },
+    {
+      "path": "reference/v010/metadata.json",
+      "original_sha256": "ed77e79f021eef4fdfa535939aeab6ad696fe58238af9a174f3e21ab0bbca1bf",
+      "packaged_sha256": "8d52ba9e6a9c92cbcbd0226384dd87f01be4557a37c30883342d07cd2f3badaf",
+      "change": "Relocated machine-specific paths; numerical configuration unchanged."
+    },
+    {
+      "path": "reference/v010/source_manifest.json",
+      "original_sha256": "f89de32cf1a9fdf746c0bd65817d0f99efb52e72166b0f9e03c82c65d106de2e",
+      "packaged_sha256": "0df221c5770a60d3c385b960130c2256cded4d8ae89150cb2e71b3d8c9c5bad8",
+      "change": "Relocated machine-specific paths; numerical configuration unchanged."
+    },
+    {
+      "path": "reference/ppo_phase_snapshots/P01/snapshot.json",
+      "original_sha256": "4e5d0ef67984de1f4ee3cef533fb6a19f3f11723789f582f9e8273c8f53c6395",
+      "packaged_sha256": "25a8e457c9e58e33f6f7c6dcc1bff7c3041e463defc15ae423102b913cba7e11",
+      "change": "Relocated machine-specific paths; numerical configuration unchanged."
+    },
+    {
+      "path": "reference/ppo_phase_snapshots/P02/snapshot.json",
+      "original_sha256": "a65528b72f1535a30efb4112fd301efa2c434c8183488dcdc437a65e5fe66f08",
+      "packaged_sha256": "f59c96a8a741a9931eb767fcd60b72e0cc7bc87e5d8d2bd2cf15837feec81396",
+      "change": "Relocated machine-specific paths; numerical configuration unchanged."
+    },
+    {
+      "path": "reference/ppo_phase_snapshots/P03/snapshot.json",
+      "original_sha256": "fba6320e39530682fb0db15501a3403fe7a78e31308431ab7ca266639556e5c5",
+      "packaged_sha256": "97a9d1bfed65b7deeb87e03f696740631313c2988110c93352031344c1009743",
+      "change": "Relocated machine-specific paths; numerical configuration unchanged."
+    },
+    {
+      "path": "reference/ppo_phase_snapshots/P04/snapshot.json",
+      "original_sha256": "ab8eb7af95f88c69f81e2a658a84e7e5c23fbf33039129229072cc632dda360f",
+      "packaged_sha256": "38d4cb6821b11164a8da9f6326cb10dd49a4856f7a78876a75d8c0c5a9c30377",
+      "change": "Relocated machine-specific paths; numerical configuration unchanged."
+    },
+    {
+      "path": "reference/ppo_phase_snapshots/P05/snapshot.json",
+      "original_sha256": "c9f15ae5eca864d9c805b8b36893948433f6af074353e23e154526e72e3bc08b",
+      "packaged_sha256": "21dd7fb494cf68b7fa40821b49414f33b9ec8e86fded6599892a250e8ab83f4b",
+      "change": "Relocated machine-specific paths; numerical configuration unchanged."
+    },
+    {
+      "path": "reference/ppo_phase_snapshots/P06/snapshot.json",
+      "original_sha256": "0f6ef8b376138e028c8a8332bf7816f2b27639a638691eb28eec5f37f58042db",
+      "packaged_sha256": "e4a342b8c7ded9824019e309be181a4b4e43859d9a3b4e67061df38d72654219",
+      "change": "Relocated machine-specific paths; numerical configuration unchanged."
+    },
+    {
+      "path": "reference/ppo_phase_snapshots/P07/snapshot.json",
+      "original_sha256": "f6ef8d1310057817f1419969ea979ac4b1a042564322df9c5b085f2439450ac1",
+      "packaged_sha256": "c191c2dcd802b4afbc47ed502da820419543a4c694bdc89457067ddba03114b9",
+      "change": "Relocated machine-specific paths; numerical configuration unchanged."
+    },
+    {
+      "path": "reference/ppo_phase_snapshots/P08/snapshot.json",
+      "original_sha256": "424b25105939277a2b0331288918d78b232ed47562f3323ec4cf5a373a34047d",
+      "packaged_sha256": "94f35ffae8a496cc6f22abd51c3101af8f3bb5160edeba028ae8130cbd04bc34",
+      "change": "Relocated machine-specific paths; numerical configuration unchanged."
+    },
+    {
+      "path": "reference/ppo_phase_snapshots/P09/snapshot.json",
+      "original_sha256": "595ba423892f3588a3ec3396eda5a3b971431a3e4580fb1cf43668c85aa5c8fa",
+      "packaged_sha256": "5b08d55719cd7a54dd4516a6be3a71ea6ba3f3b5abe3216f0f1c9657334736c1",
+      "change": "Relocated machine-specific paths; numerical configuration unchanged."
+    },
+    {
+      "path": "reference/ppo_phase_snapshots/P10/snapshot.json",
+      "original_sha256": "132784b9409fb4b8d939b0b8cdb5e6b36d38d3301fea7a021a9c9d5bd959d89b",
+      "packaged_sha256": "29b8134cb52177d309c3ddb7673812bb3a8aabac882f3b858e6265c0c5342206",
+      "change": "Relocated machine-specific paths; numerical configuration unchanged."
+    },
+    {
+      "path": "reference/ppo_phase_snapshots/P11/snapshot.json",
+      "original_sha256": "2d9676059ab8ffcbbeaf5c80f1eecc9927b5f41187fedfa8f4695d6decb5cb71",
+      "packaged_sha256": "dcb574b65fd32143dab1f32b5b3b0cc82fab4a2f45c97c82466babfb5d9d2957",
+      "change": "Relocated machine-specific paths; numerical configuration unchanged."
+    },
+    {
+      "path": "reference/ppo_phase_snapshots/P12/snapshot.json",
+      "original_sha256": "eb6d20833a015c0634e757f6987fcb0b168f9f76992930096cdc8f36c1ecb683",
+      "packaged_sha256": "bd3bbada15dc8afddd407b399221f6aeaaf5a1b89da00092b7b0b3c2d0dea24f",
+      "change": "Relocated machine-specific paths; numerical configuration unchanged."
+    },
+    {
+      "path": "reference/ppo_phase_snapshots/P13/snapshot.json",
+      "original_sha256": "dc0d2c54212f001274cebb0c93a920fff54cbbf5bb84eb3683de2086a1ce16ce",
+      "packaged_sha256": "a8a448069881caab07105b264de274e5d24fcf67253990d2519e3991b59131c7",
+      "change": "Relocated machine-specific paths; numerical configuration unchanged."
+    },
+    {
+      "path": "artifacts/ppo_phase_v1_start/DO_NOT_USE_LEGACY_PPO_SOURCE.md",
+      "original_sha256": "e087295d3563b3fe92db65bea9857bb06d5ae1f3c4a912565500d40f5daa7a1c",
+      "packaged_sha256": "75b975430ad1da85ecf2a22d98384d7969268edbfc1198b48d953e0cdf9901fe",
+      "change": "Relocated machine-specific paths; numerical configuration unchanged."
+    },
+    {
+      "path": "artifacts/ppo_phase_v1_start/rl_runtime_inventory.json",
+      "original_sha256": "dd74590496eab93e8d88cf03cfed40bec9cfd7f8862a56781531a838cfd051d0",
+      "packaged_sha256": "3d1c3851121f04178526bec2dc3aab677a67280d6ec6fd08b87985571954cf35",
+      "change": "Relocated machine-specific paths; numerical configuration unchanged."
+    },
+    {
+      "path": "artifacts/ppo_phase_v1_start/source_repo_path.txt",
+      "original_sha256": "327dbe767e4f2ba8de13c4edc9ec4bcc654abfa9c59d0bfc5fc1234779b4205d",
+      "packaged_sha256": "89612809c86986763f2ba633f1ff24d9744cc7986c72809a41ede587b25d44cb",
+      "change": "Relocated machine-specific paths; numerical configuration unchanged."
+    }
+  ]
+}

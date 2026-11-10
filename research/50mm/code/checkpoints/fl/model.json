@@ -1,0 +1,415 @@
+{
+  "schema": "wlr50.portable-model.v1",
+  "stage": "fl",
+  "observation_dimension": 535,
+  "action_dimension": 12,
+  "runner_config": {
+    "actor": {
+      "class_name": "wlr50_clean.ppo.semantic_fl_forward_actor:WindowFLActor",
+      "expected_frozen_A_sha256": "14922630ffc2105b3b59472cfbc48009c56f9fb329bf62e2aee70e211f575bd5",
+      "frozen_A_configuration": {
+        "activation": "elu",
+        "class_name": "wlr50_clean.ppo.semantic_finish_advance_actor:SemanticFinishAdvanceMLPModel",
+        "distribution_cfg": {
+          "class_name": "HeteroscedasticGaussianDistribution",
+          "init_std": 0.15,
+          "std_type": "log"
+        },
+        "expected_accepted_state_sha256": "e7258eae48bc92c9fb534337c0a6bb74960b725783e4e874d6b647af6514e013",
+        "frozen_accepted_configuration": {
+          "activation": "elu",
+          "class_name": "wlr50_clean.ppo.semantic_post_rr_front_prep_actor:SemanticPostRRHistoryMLPModel",
+          "distribution_cfg": {
+            "class_name": "HeteroscedasticGaussianDistribution",
+            "init_std": 0.15,
+            "std_type": "log"
+          },
+          "expected_anchor_state_sha256": "29deb8e53dbd5e10862f9ac03693af04ad8f8257bf7fe392c84699d911d7a76c",
+          "frozen_anchor_configuration": {
+            "activation": "elu",
+            "continuation": true,
+            "distribution_cfg": {
+              "class_name": "HeteroscedasticGaussianDistribution",
+              "init_std": 0.15,
+              "std_type": "log"
+            },
+            "hidden_dims": [
+              128,
+              128
+            ],
+            "initial_capture_std": [
+              0.045,
+              0.045,
+              0.045,
+              0.035,
+              0.045,
+              0.06,
+              0.3,
+              0.3,
+              0.045,
+              0.045,
+              0.045,
+              0.045
+            ],
+            "local_mean_coordinate_gain_full12": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              10.0,
+              10.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "obs_normalization": false,
+            "observation_layout": "role439_rr_rl_continuous_v3"
+          },
+          "hidden_dims": [
+            128,
+            128
+          ],
+          "initial_post_std": [
+            0.045,
+            0.06,
+            0.04,
+            0.04,
+            0.05,
+            0.07,
+            0.12,
+            0.12,
+            0.045,
+            0.045,
+            0.05,
+            0.05
+          ],
+          "obs_normalization": false,
+          "observation_layout": "accepted465_post_rr_front_pair490_v2"
+        },
+        "hidden_dims": [
+          128,
+          128
+        ],
+        "initial_finish_std": [
+          0.04,
+          0.04,
+          0.04,
+          0.04,
+          0.04,
+          0.04,
+          0.04,
+          0.04,
+          0.03,
+          0.03,
+          0.03,
+          0.03
+        ],
+        "obs_normalization": false,
+        "observation_layout": "accepted490_post_rl_advance_home_v1"
+      },
+      "initial_std": 0.03,
+      "obs_normalization": false,
+      "observation_layout": "accepted531_p06_fl_scalar_v1"
+    },
+    "algorithm": {
+      "class_name": "PPO",
+      "clip_param": 0.2,
+      "desired_kl": 0.01,
+      "entropy_coef": 0.001,
+      "gamma": 0.9985,
+      "lam": 0.99,
+      "learning_rate": 1e-05,
+      "max_grad_norm": 1.0,
+      "normalize_advantage_per_mini_batch": false,
+      "num_learning_epochs": 5,
+      "num_mini_batches": 4,
+      "optimizer": "adam",
+      "rnd_cfg": null,
+      "schedule": "adaptive",
+      "share_cnn_encoders": false,
+      "symmetry_cfg": null,
+      "use_clipped_value_loss": true,
+      "value_loss_coef": 1.0
+    },
+    "check_for_nan": true,
+    "class_name": "OnPolicyRunner",
+    "critic": {
+      "activation": "elu",
+      "class_name": "MLPModel",
+      "distribution_cfg": null,
+      "hidden_dims": [
+        128,
+        128
+      ],
+      "obs_normalization": false
+    },
+    "device": "cuda:0",
+    "experiment_name": "ppo_post_rr_front_pair_rl_v1",
+    "logger": "tensorboard",
+    "max_iterations": 2000,
+    "multi_gpu": null,
+    "num_steps_per_env": 512,
+    "obs_groups": {
+      "actor": [
+        "policy"
+      ],
+      "critic": [
+        "critic"
+      ]
+    },
+    "run_name": "",
+    "save_interval": 1,
+    "seed": 1001
+  },
+  "fresh_optimizer_learning_rate": 0.01,
+  "fresh_optimizer_scope": "Adam moments and training RNG history are not restored. New run uses an explicit seed.",
+  "source_checkpoint": {
+    "name": "checkpoint_CP233547_FL000587_data002048_gd226fafd8bc0.pt",
+    "sha256": "39c35998298fe25541f7c6595076486ea629cbf8f5b4d833f2bce3cce1810458",
+    "manifest_sha256": "e28866bd440c629c94d1bf1b6f727bba9ee83983c77a26f3b978a7b6a3f83785"
+  },
+  "weights": {
+    "file": "weights.npz",
+    "sha256": "1dcd7c624d2a28d14a9b58cc8854958efb798b4d920143b182929fdbec95ee74",
+    "tensors": [
+      {
+        "key": "actor::mlp.mean_delta",
+        "shape": [],
+        "dtype": "float32"
+      },
+      {
+        "key": "actor::mlp.log_std",
+        "shape": [],
+        "dtype": "float32"
+      },
+      {
+        "key": "actor::frozen_A.mlp.0.weight",
+        "shape": [
+          128,
+          531
+        ],
+        "dtype": "float32"
+      },
+      {
+        "key": "actor::frozen_A.mlp.0.bias",
+        "shape": [
+          128
+        ],
+        "dtype": "float32"
+      },
+      {
+        "key": "actor::frozen_A.mlp.2.weight",
+        "shape": [
+          128,
+          128
+        ],
+        "dtype": "float32"
+      },
+      {
+        "key": "actor::frozen_A.mlp.2.bias",
+        "shape": [
+          128
+        ],
+        "dtype": "float32"
+      },
+      {
+        "key": "actor::frozen_A.mlp.4.weight",
+        "shape": [
+          24,
+          128
+        ],
+        "dtype": "float32"
+      },
+      {
+        "key": "actor::frozen_A.mlp.4.bias",
+        "shape": [
+          24
+        ],
+        "dtype": "float32"
+      },
+      {
+        "key": "actor::frozen_A.frozen_accepted.mlp.0.weight",
+        "shape": [
+          128,
+          490
+        ],
+        "dtype": "float32"
+      },
+      {
+        "key": "actor::frozen_A.frozen_accepted.mlp.0.bias",
+        "shape": [
+          128
+        ],
+        "dtype": "float32"
+      },
+      {
+        "key": "actor::frozen_A.frozen_accepted.mlp.2.weight",
+        "shape": [
+          128,
+          128
+        ],
+        "dtype": "float32"
+      },
+      {
+        "key": "actor::frozen_A.frozen_accepted.mlp.2.bias",
+        "shape": [
+          128
+        ],
+        "dtype": "float32"
+      },
+      {
+        "key": "actor::frozen_A.frozen_accepted.mlp.4.weight",
+        "shape": [
+          24,
+          128
+        ],
+        "dtype": "float32"
+      },
+      {
+        "key": "actor::frozen_A.frozen_accepted.mlp.4.bias",
+        "shape": [
+          24
+        ],
+        "dtype": "float32"
+      },
+      {
+        "key": "actor::frozen_A.frozen_accepted.frozen_anchor.mlp.0.weight",
+        "shape": [
+          128,
+          465
+        ],
+        "dtype": "float32"
+      },
+      {
+        "key": "actor::frozen_A.frozen_accepted.frozen_anchor.mlp.0.bias",
+        "shape": [
+          128
+        ],
+        "dtype": "float32"
+      },
+      {
+        "key": "actor::frozen_A.frozen_accepted.frozen_anchor.mlp.2.weight",
+        "shape": [
+          128,
+          128
+        ],
+        "dtype": "float32"
+      },
+      {
+        "key": "actor::frozen_A.frozen_accepted.frozen_anchor.mlp.2.bias",
+        "shape": [
+          128
+        ],
+        "dtype": "float32"
+      },
+      {
+        "key": "actor::frozen_A.frozen_accepted.frozen_anchor.mlp.4.weight",
+        "shape": [
+          24,
+          128
+        ],
+        "dtype": "float32"
+      },
+      {
+        "key": "actor::frozen_A.frozen_accepted.frozen_anchor.mlp.4.bias",
+        "shape": [
+          24
+        ],
+        "dtype": "float32"
+      },
+      {
+        "key": "actor::frozen_A.frozen_accepted.frozen_anchor.frozen_prior.mlp.0.weight",
+        "shape": [
+          256,
+          439
+        ],
+        "dtype": "float32"
+      },
+      {
+        "key": "actor::frozen_A.frozen_accepted.frozen_anchor.frozen_prior.mlp.0.bias",
+        "shape": [
+          256
+        ],
+        "dtype": "float32"
+      },
+      {
+        "key": "actor::frozen_A.frozen_accepted.frozen_anchor.frozen_prior.mlp.2.weight",
+        "shape": [
+          256,
+          256
+        ],
+        "dtype": "float32"
+      },
+      {
+        "key": "actor::frozen_A.frozen_accepted.frozen_anchor.frozen_prior.mlp.2.bias",
+        "shape": [
+          256
+        ],
+        "dtype": "float32"
+      },
+      {
+        "key": "actor::frozen_A.frozen_accepted.frozen_anchor.frozen_prior.mlp.4.weight",
+        "shape": [
+          24,
+          256
+        ],
+        "dtype": "float32"
+      },
+      {
+        "key": "actor::frozen_A.frozen_accepted.frozen_anchor.frozen_prior.mlp.4.bias",
+        "shape": [
+          24
+        ],
+        "dtype": "float32"
+      },
+      {
+        "key": "critic::mlp.0.weight",
+        "shape": [
+          128,
+          535
+        ],
+        "dtype": "float32"
+      },
+      {
+        "key": "critic::mlp.0.bias",
+        "shape": [
+          128
+        ],
+        "dtype": "float32"
+      },
+      {
+        "key": "critic::mlp.2.weight",
+        "shape": [
+          128,
+          128
+        ],
+        "dtype": "float32"
+      },
+      {
+        "key": "critic::mlp.2.bias",
+        "shape": [
+          128
+        ],
+        "dtype": "float32"
+      },
+      {
+        "key": "critic::mlp.4.weight",
+        "shape": [
+          1,
+          128
+        ],
+        "dtype": "float32"
+      },
+      {
+        "key": "critic::mlp.4.bias",
+        "shape": [
+          1
+        ],
+        "dtype": "float32"
+      }
+    ]
+  }
+}

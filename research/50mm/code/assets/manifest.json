@@ -1,0 +1,30 @@
+{
+  "schema": "wlr50.public_robot_asset.v1",
+  "asset": "wlr_robot_drive_test.usd",
+  "bytes": 45607185,
+  "sha256": "e8a2a2b1485a32a50e851a07b9dd8ac4945b78ec49b7fada2b61c3eeb1e18892",
+  "source_role": "Hash-locked robot model used by the original 50 mm environment",
+  "content_modified": false,
+  "format": "USDC",
+  "embedded_mesh_prims": 40,
+  "sub_layers": [],
+  "external_project_layers": [],
+  "external_project_meshes_or_textures": [],
+  "runtime_material_dependencies": [
+    {
+      "asset": "OmniPBR.mdl",
+      "provider": "NVIDIA Isaac Sim / Kit material library",
+      "installed_relative_location": "kit/mdl/core/Base/OmniPBR.mdl",
+      "vendored": false
+    }
+  ],
+  "validation": {
+    "date": "2026-11-10",
+    "openusd_version": "0.24.5",
+    "stage_opened": true,
+    "dependency_scan": "UsdUtils.ComputeAllDependencies with the installed Isaac Sim Base material directory in the resolver context",
+    "unresolved_dependencies": [],
+    "physics_or_training_run": false
+  },
+  "license_status": "No explicit project-level code or robot-asset license was found in the audited source locations. This manifest does not grant or infer a license."
+}

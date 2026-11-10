@@ -1,0 +1,3 @@
+# Package checksums bind exact bytes, including original text line endings.
+# Do not let Git's core.autocrlf alter source, metadata, models or USD assets.
+* -text

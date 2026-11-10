@@ -1,0 +1,249 @@
+{
+  "schema": "wlr50.portable-model.v1",
+  "stage": "rr",
+  "observation_dimension": 465,
+  "action_dimension": 12,
+  "runner_config": {
+    "actor": {
+      "activation": "elu",
+      "class_name": "wlr50_clean.ppo.semantic_rr_capture_local_actor:SemanticRRCaptureLocalHistoryMLPModel",
+      "continuation": true,
+      "distribution_cfg": {
+        "class_name": "HeteroscedasticGaussianDistribution",
+        "init_std": 0.15,
+        "std_type": "log"
+      },
+      "hidden_dims": [
+        128,
+        128
+      ],
+      "initial_capture_std": [
+        0.045,
+        0.045,
+        0.045,
+        0.035,
+        0.045,
+        0.06,
+        0.3,
+        0.3,
+        0.045,
+        0.045,
+        0.045,
+        0.045
+      ],
+      "local_mean_coordinate_gain_full12": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        10.0,
+        10.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "obs_normalization": false,
+      "observation_layout": "role439_rr_rl_continuous_v3"
+    },
+    "algorithm": {
+      "class_name": "PPO",
+      "clip_param": 0.2,
+      "desired_kl": 0.01,
+      "entropy_coef": 0.001,
+      "gamma": 0.9985,
+      "lam": 0.99,
+      "learning_rate": 0.0003,
+      "max_grad_norm": 1.0,
+      "normalize_advantage_per_mini_batch": false,
+      "num_learning_epochs": 5,
+      "num_mini_batches": 4,
+      "optimizer": "adam",
+      "rnd_cfg": null,
+      "schedule": "adaptive",
+      "share_cnn_encoders": false,
+      "symmetry_cfg": null,
+      "use_clipped_value_loss": true,
+      "value_loss_coef": 1.0
+    },
+    "check_for_nan": true,
+    "class_name": "OnPolicyRunner",
+    "critic": {
+      "activation": "elu",
+      "class_name": "MLPModel",
+      "distribution_cfg": null,
+      "hidden_dims": [
+        128,
+        128
+      ],
+      "obs_normalization": false
+    },
+    "device": "cuda:0",
+    "experiment_name": "ppo_rr_capture_first_cp225280_v1",
+    "logger": "tensorboard",
+    "max_iterations": 2000,
+    "multi_gpu": null,
+    "num_steps_per_env": 512,
+    "obs_groups": {
+      "actor": [
+        "policy"
+      ],
+      "critic": [
+        "critic"
+      ]
+    },
+    "run_name": "",
+    "save_interval": 1,
+    "seed": 1001
+  },
+  "fresh_optimizer_learning_rate": 3.3750000000000014e-05,
+  "fresh_optimizer_scope": "Adam moments and training RNG history are not restored. New run uses an explicit seed.",
+  "source_checkpoint": {
+    "name": "checkpoint_CP231936_local006656_aux000096_continuous465_v3_g6b2d0df71cb8.pt",
+    "sha256": "8ecfebbb4262234bafadabaab67f33c06e2ea7a6dc35cd9bc37d98099f20f221",
+    "manifest_sha256": "d289e1735e7dc0f6d4a5e2274e6c935b6a282baf9ad1efa61e1be88b0607d1cd"
+  },
+  "weights": {
+    "file": "weights.npz",
+    "sha256": "7c546df5e6b392a483d160a6a76ad5dac4b8e32db22e55451381147bd0d0e4fd",
+    "tensors": [
+      {
+        "key": "actor::mlp.0.weight",
+        "shape": [
+          128,
+          465
+        ],
+        "dtype": "float32"
+      },
+      {
+        "key": "actor::mlp.0.bias",
+        "shape": [
+          128
+        ],
+        "dtype": "float32"
+      },
+      {
+        "key": "actor::mlp.2.weight",
+        "shape": [
+          128,
+          128
+        ],
+        "dtype": "float32"
+      },
+      {
+        "key": "actor::mlp.2.bias",
+        "shape": [
+          128
+        ],
+        "dtype": "float32"
+      },
+      {
+        "key": "actor::mlp.4.weight",
+        "shape": [
+          24,
+          128
+        ],
+        "dtype": "float32"
+      },
+      {
+        "key": "actor::mlp.4.bias",
+        "shape": [
+          24
+        ],
+        "dtype": "float32"
+      },
+      {
+        "key": "actor::frozen_prior.mlp.0.weight",
+        "shape": [
+          256,
+          439
+        ],
+        "dtype": "float32"
+      },
+      {
+        "key": "actor::frozen_prior.mlp.0.bias",
+        "shape": [
+          256
+        ],
+        "dtype": "float32"
+      },
+      {
+        "key": "actor::frozen_prior.mlp.2.weight",
+        "shape": [
+          256,
+          256
+        ],
+        "dtype": "float32"
+      },
+      {
+        "key": "actor::frozen_prior.mlp.2.bias",
+        "shape": [
+          256
+        ],
+        "dtype": "float32"
+      },
+      {
+        "key": "actor::frozen_prior.mlp.4.weight",
+        "shape": [
+          24,
+          256
+        ],
+        "dtype": "float32"
+      },
+      {
+        "key": "actor::frozen_prior.mlp.4.bias",
+        "shape": [
+          24
+        ],
+        "dtype": "float32"
+      },
+      {
+        "key": "critic::mlp.0.weight",
+        "shape": [
+          128,
+          465
+        ],
+        "dtype": "float32"
+      },
+      {
+        "key": "critic::mlp.0.bias",
+        "shape": [
+          128
+        ],
+        "dtype": "float32"
+      },
+      {
+        "key": "critic::mlp.2.weight",
+        "shape": [
+          128,
+          128
+        ],
+        "dtype": "float32"
+      },
+      {
+        "key": "critic::mlp.2.bias",
+        "shape": [
+          128
+        ],
+        "dtype": "float32"
+      },
+      {
+        "key": "critic::mlp.4.weight",
+        "shape": [
+          1,
+          128
+        ],
+        "dtype": "float32"
+      },
+      {
+        "key": "critic::mlp.4.bias",
+        "shape": [
+          1
+        ],
+        "dtype": "float32"
+      }
+    ]
+  }
+}

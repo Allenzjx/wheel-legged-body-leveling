@@ -4,6 +4,21 @@ The controller combines a recorded obstacle-traversal reference with state-depen
 
 This directory describes the composite policy used in the [50 mm nominal comparison](https://allenzjx.github.io/wheel-legged-body-leveling/media/comparison-50mm-nominal.mp4). The model is identified by checkpoint `CP233547`, SHA256 `34537113f574361df736a1aafb15bca1ef5afb01614d3a79998b35b0fea102e6`. The recorded comparison uses case `grid_d1_mu1`, a 50 mm step, a requested initial gap of 218.5 mm and friction multiplier 1.0.
 
+## Run the training code
+
+The complete [simulation and PPO code package](code/) includes the robot asset, recorded motion reference, controller, environment, observation and action interfaces, stage-specific rewards, training loop and five model bundles. Begin with the [installation instructions](code/DEPENDENCIES.md) and [English run guide](code/README.md).
+
+After installing the documented simulator environment, run these commands from `research/50mm/code`:
+
+```powershell
+python -m pip install -e ".[training]"
+python scripts/run.py preflight --check-models
+python scripts/run.py evaluate --stage full --run-dir runs/full-eval-001 --seed 4001 --max-decisions 3000
+python scripts/run.py train --stage early --run-dir runs/early-001 --seed 1001 --decisions 128
+```
+
+The evaluation starts the complete selected controller at the native task reset. Training commands continue the supplied learned components with a fresh Adam optimizer. The guide also covers rear-right transfer, following transfer and front-left wheel refinement. These are independent continuations, not an exact reconstruction of historical training from random initialization. New outputs are kept in separate run directories.
+
 ## State, actions and control
 
 The evaluated interface contains 536 observation values. Its semantic groups include body orientation and motion; joint and wheel state; contacts, loads and support geometry; obstacle-relative geometry; traversal phase and physical progress; and finite command history. The layout contains extensions and padded fields inherited from earlier components. The groups are not an additive dimension partition. Actor and critic receive the same simulator-derived observation vector.
@@ -62,6 +77,8 @@ The video illustrates one selected condition. It is separate from training rollo
 
 ## Files and model reuse
 
+- [Runnable source and environment](code/): complete local training and evaluation package, including the robot USD and motion reference.
+- [Run guide](code/README.md): installation, full traversal evaluation, component training, outputs and source map.
 - [Model weights](model/composite-policy.npz): actor and critic tensors, including all nested retained actor weights, stored as numeric NumPy arrays.
 - [Tensor manifest](model/tensors.json): archive keys, tensor names, shapes, dtypes and checksums.
 - [Model configuration](model/configuration.json): the selected actor/critic construction and optimizer configuration, without machine-specific paths.
@@ -70,7 +87,7 @@ The video illustrates one selected condition. It is separate from training rollo
 - [Export provenance](provenance.json): original model identity, archive checks and file hashes.
 - [Export utility](export_model.py): produces the numeric archive from the original checkpoint and sidecar; performs no inference or training.
 
-The archive contains the complete composite policy weights; separate ancestor checkpoint files are not required to recover the tensors. It is not a standalone simulation environment. Running the controller also requires its observation construction, reference motion, command mapping, robot assets, simulator and matching library interfaces. Optimizer state and original metadata are omitted from the archive, so it is not a training-resumption checkpoint.
+The numeric archive contains the complete composite policy weights; separate ancestor checkpoint files are not required to recover the tensors. The accompanying [code package](code/) supplies the observation construction, reference motion, command mapping and robot asset; Isaac Sim and Isaac Lab are installed separately. Historical optimizer state is omitted, so training starts a new optimizer rather than restoring old Adam moments.
 
 The arrays can be inspected without PyTorch or pickle:
 
