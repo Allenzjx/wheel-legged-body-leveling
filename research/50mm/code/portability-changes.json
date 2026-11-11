@@ -116,12 +116,6 @@
       "change": "Relocated machine-specific paths; numerical configuration unchanged."
     },
     {
-      "path": "artifacts/ppo_phase_v1_start/DO_NOT_USE_LEGACY_PPO_SOURCE.md",
-      "original_sha256": "e087295d3563b3fe92db65bea9857bb06d5ae1f3c4a912565500d40f5daa7a1c",
-      "packaged_sha256": "75b975430ad1da85ecf2a22d98384d7969268edbfc1198b48d953e0cdf9901fe",
-      "change": "Relocated machine-specific paths; numerical configuration unchanged."
-    },
-    {
       "path": "artifacts/ppo_phase_v1_start/rl_runtime_inventory.json",
       "original_sha256": "dd74590496eab93e8d88cf03cfed40bec9cfd7f8862a56781531a838cfd051d0",
       "packaged_sha256": "3d1c3851121f04178526bec2dc3aab677a67280d6ec6fd08b87985571954cf35",
@@ -140,6 +134,13 @@
       "original_sha256": "0d429a5dc33ddcb53b75a0261fd6e36a6a35669cfefe2a1e9c2696f5bef6b5b3",
       "packaged_sha256": "95108c394ba7254661e535c9ed4b12cca4de1812b033f723db51f4b8322ff8a9",
       "change": "Replaced outdated module instructions with the 50 mm control method, supported entry commands, and source map."
+    }
+  ],
+  "omitted_documentation": [
+    {
+      "path": "artifacts/ppo_phase_v1_start/DO_NOT_USE_LEGACY_PPO_SOURCE.md",
+      "original_sha256": "e087295d3563b3fe92db65bea9857bb06d5ae1f3c4a912565500d40f5daa7a1c",
+      "type": "Instruction-only development note"
     }
   ]
 }

@@ -48,27 +48,27 @@
   "stages": [
     {
       "name": "Early motion",
-      "objective": "Learn forward progress, then introduce limited body-posture and obstacle-gap terms.",
+      "objective": "Early motion establishes forward progress with body-posture and obstacle-gap terms.",
       "execution": "Training starts at the beginning of the 50 mm task and develops the motion needed to reach later wheel transfers.",
-      "handoff": "The selected early actor is retained with fixed weights for subsequent training."
+      "handoff": "The early-motion actor retains fixed weights during subsequent component training."
     },
     {
       "name": "Rear-right transfer",
-      "objective": "Continue rear-right contact and subsequent rear-left transfer toward traversal completion.",
-      "execution": "The retained actor reaches the transfer interval; the new actor learns corrections within that interval. Rear-right touchdown is an intermediate event.",
-      "handoff": "The earlier actor remains fixed while the transfer component is optimized."
+      "objective": "Rear-right transfer coordinates wheel contact and continued rear-left transfer toward traversal completion.",
+      "execution": "The early-motion actor reaches the transfer interval. The transfer actor learns local corrections around rear-right touchdown and subsequent support transfer.",
+      "handoff": "The early-motion actor retains fixed weights while the transfer component is optimized."
     },
     {
       "name": "Following transfer",
-      "objective": "Coordinate front-leg preparation, support transfer, and rear-left lift and placement.",
+      "objective": "Following transfer coordinates front-leg preparation, support transfer, and rear-left lift and placement.",
       "execution": "Training continues beyond rear-right transfer, with all 12 correction coordinates available after activation.",
       "handoff": "The preceding composite actor is retained while the new transfer component learns."
     },
     {
       "name": "Front-left wheel refinement",
-      "objective": "Encourage forward travel and reduce reverse commands or loaded counter-rotation without progress.",
+      "objective": "Front-left wheel refinement rewards forward travel and penalizes reverse commands or loaded counter-rotation without progress.",
       "execution": "A local Gaussian component adjusts the front-left wheel in its eligible control interval. The preceding joint and wheel policy remains active.",
-      "handoff": "Actor updates use eligible samples; other stored decisions can contribute to value estimation. The selected components are then evaluated with fixed weights."
+      "handoff": "Eligible samples update the actor; other stored decisions contribute to value estimation. Evaluation uses the complete controller with fixed weights."
     }
   ],
   "optimization": [
@@ -79,7 +79,7 @@
     ],
     [
       "Rollout length",
-      "128 policy decisions in selected early rollouts",
+      "128 policy decisions per environment",
       "512 policy decisions; one environment"
     ],
     [
@@ -94,7 +94,7 @@
     ],
     [
       "Discount factor / GAE",
-      "0.995 / 0.95 in initial early training",
+      "Initial rollouts: 0.995 / 0.95; subsequent rollouts: 0.9985 / 0.99",
       "0.9985 / 0.99"
     ],
     [
@@ -115,5 +115,5 @@
   ],
   "optimizationNote": "Reward terms, observation layouts and learning rates are stage-specific. The target KL governs the adaptive learning-rate schedule.",
   "reward": "The reward combines traversal progress and completion with stage-specific posture, contact and motion-quality terms. Transfer stages reward wheel lift, crossing and placement events. The front-left refinement adds forward-displacement reward and penalties for reverse commands or loaded counterdrive without progress. A wheel-contact event is distinct from completion of the crossing.",
-  "evaluation": "Evaluation executes the selected composite controller with deterministic actions and fixed weights. Recorded Replay and Residual PPO start from separate resets with matched task conditions. The evaluation tracks body attitude, wheel contacts and traversal completion; demonstration clips are separate from training rollouts."
+  "evaluation": "Evaluation executes the complete controller with deterministic actions and fixed weights. Recorded Replay and Residual PPO use separate resets with matched task conditions. Measurements include body attitude, wheel contacts and traversal completion."
 }

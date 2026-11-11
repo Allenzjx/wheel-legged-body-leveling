@@ -4,41 +4,41 @@
       "id": "50mm-nominal",
       "title": "50 mm nominal traversal",
       "caption": "Total body inclination and phase-wise roll and pitch RMS. Initial gap: 218.5 mm; friction multiplier: 1.0.",
-      "src": "figures/poster-results-50mm-nominal.png",
+      "src": "figures/results-50mm-nominal.png",
       "panels": [
-        {"src": "figures/poster-results-50mm-inclination.png", "alt": "50 mm total body inclination over time"},
-        {"src": "figures/poster-results-50mm-roll.png", "alt": "50 mm phase-wise roll RMS"},
-        {"src": "figures/poster-results-50mm-pitch.png", "alt": "50 mm phase-wise pitch RMS"}
+        {"src": "figures/results-50mm-inclination.png", "alt": "50 mm total body inclination over time"},
+        {"src": "figures/results-50mm-roll.png", "alt": "50 mm phase-wise roll RMS"},
+        {"src": "figures/results-50mm-pitch.png", "alt": "50 mm phase-wise pitch RMS"}
       ]
     },
     {
       "id": "100mm-nominal",
       "title": "100 mm nominal traversal",
       "caption": "Total body inclination and phase-wise roll and pitch RMS under the same nominal gap and friction multiplier.",
-      "src": "figures/poster-results-100mm-nominal.png",
+      "src": "figures/results-100mm-nominal.png",
       "panels": [
-        {"src": "figures/poster-results-100mm-inclination.png", "alt": "100 mm total body inclination over time"},
-        {"src": "figures/poster-results-100mm-roll.png", "alt": "100 mm phase-wise roll RMS"},
-        {"src": "figures/poster-results-100mm-pitch.png", "alt": "100 mm phase-wise pitch RMS"}
+        {"src": "figures/results-100mm-inclination.png", "alt": "100 mm total body inclination over time"},
+        {"src": "figures/results-100mm-roll.png", "alt": "100 mm phase-wise roll RMS"},
+        {"src": "figures/results-100mm-pitch.png", "alt": "100 mm phase-wise pitch RMS"}
       ]
     },
     {
       "id": "50mm-postures",
       "title": "50 mm wheel-transfer postures",
       "caption": "Body inclination at the front-right, front-left, rear-right and rear-left wheel-lift phases. Angles and timestamps are shown for each pose.",
-      "src": "figures/poster-results-50mm-postures.png"
+      "src": "figures/results-50mm-postures.png"
     },
     {
       "id": "100mm-postures",
       "title": "100 mm wheel-transfer postures",
       "caption": "Body-inclination snapshots across the four wheel transfers, with the corresponding angles and timestamps.",
-      "src": "figures/poster-results-100mm-postures.png"
+      "src": "figures/results-100mm-postures.png"
     },
     {
       "id": "completion-table",
       "title": "Completion and traversal performance",
       "caption": "Completion counts, peak body inclination and peak completion time across 39 test conditions at each obstacle height.",
-      "src": "figures/poster-results-completion-table.png",
+      "src": "figures/results-completion-table.png",
       "scrollable": true
     }
   ]

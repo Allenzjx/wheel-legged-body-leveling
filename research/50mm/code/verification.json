@@ -2,7 +2,7 @@
   "schema": "wlr50.execution-checks.v1",
   "date": "2026-11-10",
   "scope": "Execution results for simulated 50 mm traversal control and PPO training.",
-  "current_package_manifest_sha256": "8d965372d98cd31f13811915097333523c17d90800fe973960c116750f0220fd",
+  "current_package_manifest_sha256": "3191d4d2ee1831f9d0ef94a0bbc00d49cd467680173e95cae8bbeedeb026f81b",
   "environment": {
     "os": "Windows 11",
     "python": "3.11.15",
@@ -73,7 +73,7 @@
       "manifest_sha256": "cd3915a9a079a838d5e8e4e1b73192dfa9232372ce99545333d717032304980d",
       "checked_files": 380
     },
-    "optimizer_initialization": "fresh Adam; no restored moments or historical RNG",
+    "optimizer_initialization": "Fresh Adam optimizer",
     "source_model_archive_sha256": "770f9e9d7b067c03111b8c0f2c93ebfc1daed7d65b09ceef6ed4ab26fe91ec72",
     "saved_model_archive_sha256": "c662a4a5fd3007977dfaf7066bddb8c2905d87ad8a88ca64a4982b3b05287c61",
     "result": {
@@ -86,7 +86,7 @@
         "optimizer_steps": 20,
         "completed_episodes": 0
       },
-      "scope": "Fresh-optimizer continuation from the supplied stage model; historical training is unchanged"
+      "scope": "PPO continuation from the supplied early-stage model with a fresh Adam optimizer"
     },
     "actor_parameters_changed": true,
     "finite_nonzero_gradient_observed": true,
@@ -194,9 +194,12 @@
     "current_runtime_and_model_bytes_match_early_training_package": true,
     "documentation_changes": [
       "src/wlr50_clean/ppo/README.md"
+    ],
+    "removed_documentation": [
+      "artifacts/ppo_phase_v1_start/DO_NOT_USE_LEGACY_PPO_SOURCE.md"
     ]
   },
-  "record_handling": "Private workstation paths and raw simulator logs are omitted. Run receipts are summarized here with their SHA-256 identities; local run directories and the smoke-trained model are not part of the published selected model set.",
+  "record_handling": "Run receipts include SHA-256 identities. The model bundles contain the evaluation controller and stage training initializations; the model produced by the execution check is stored separately.",
   "tested_source_commit": "7c4dd32a176fc74a1f8d3b08ebdbebe484d5b064",
   "coverage": {
     "complete_simulation_episodes": 1,
@@ -207,8 +210,8 @@
   "documentation_preflight": {
     "command": "python scripts/run.py preflight",
     "status": "PASS",
-    "checked_files": 380,
-    "package_manifest_sha256": "8d965372d98cd31f13811915097333523c17d90800fe973960c116750f0220fd",
+    "checked_files": 379,
+    "package_manifest_sha256": "3191d4d2ee1831f9d0ef94a0bbc00d49cd467680173e95cae8bbeedeb026f81b",
     "model_construction_checked": false,
     "physics_started": false
   }

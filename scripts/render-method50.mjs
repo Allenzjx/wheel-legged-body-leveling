@@ -25,7 +25,7 @@ export function renderMethod50({e,table,equation}) {
     <ol class="timeline">${stages}</ol>
 
     <h3>3.4 PPO optimization</h3>
-    <p>Simulator rollouts collect observations, sampled residual requests and rewards. The critic estimates return, and generalized advantage estimation combines rewards and value estimates into the actor's training signal. PPO updates the eligible actor component through a clipped likelihood-ratio objective.</p>
+    <p>Simulator rollouts collect observations, sampled residual requests and rewards. The critic estimates return, and generalized advantage estimation (GAE) combines rewards and value estimates into the actor's training signal. PPO updates the eligible actor component through a clipped likelihood-ratio objective.</p>
     ${equation(3,'L<sup>CLIP</sup>(θ) = E[min(ρ<sub>t</sub> Â<sub>t</sub>, clip(ρ<sub>t</sub>, 1 − ε, 1 + ε) Â<sub>t</sub>)]','ρ is the new-to-old action probability ratio, Â is the estimated advantage and ε = 0.2. Probability-ratio clipping controls the policy update; the physical residual bounds separately constrain the command.')}
     <details class="technical"><summary>Optimization settings by stage</summary>${table('50 mm training settings',['Setting','Early motion','Local refinements'],m.optimization.map(r=>r.map(e)))}<p>${e(m.optimizationNote)}</p></details>
     <div class="two-col"><div><h3>Reward design</h3><p>${e(m.reward)}</p></div><div><h3>Evaluation protocol</h3><p>${e(m.evaluation)}</p></div></div>

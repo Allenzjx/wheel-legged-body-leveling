@@ -4,7 +4,7 @@ Execution tests ran on Windows 11 with Python 3.11.15, Isaac Sim 5.1.0.0, Isaac 
 
 | Test | Result |
 | --- | --- |
-| Public repository download and CPU preflight | 380 package files passed checksum checks. All five model bundles loaded strictly and produced finite actor outputs. |
+| Public repository download and CPU preflight | Package files passed checksum checks. All five model bundles loaded strictly and produced finite actor outputs. |
 | Complete traversal, deterministic policy, seed 4001 | `SUCCESS`; 1,404 policy decisions, 11,232 physics ticks, 93.6 simulated seconds; zero policy updates. |
 | Early-motion training, seed 1001 | 128 stored and actor-eligible transitions; one PPO update and 20 Adam steps. The rollout ended at its sampling budget with zero completed episodes. |
 | Saved training model | All six actor tensors and all six critic tensors changed. Saved values were finite, and strict CPU reloading produced a finite 12-coordinate action output. |

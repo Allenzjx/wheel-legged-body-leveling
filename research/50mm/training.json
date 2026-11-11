@@ -9,7 +9,7 @@
     "wheel_request_coordinates": 4,
     "policy_frequency_hz": 15,
     "physics_frequency_hz": 120,
-    "actor_critic_observation_scope": "Same simulator-derived vector; explicit history and layout extensions; no privileged-critic-only split",
+    "actor_critic_observation_scope": "Actor and critic receive the same simulator-derived vector, including command history and traversal context.",
     "joint_units": "degrees in controller coordinates",
     "wheel_units": "rad/s in controller coordinates",
     "evaluation": "Deterministic actions, fixed parameters, no online optimizer updates"
@@ -34,7 +34,7 @@
         "ppo_updates": 1725,
         "adam_steps": 34500
       },
-      "collection": "128 decisions per environment; most runs use one environment, while semantic-v2 includes eight-environment runs",
+      "collection": "128 decisions per environment; collection uses one- and eight-environment rollouts.",
       "discount_and_gae": {
         "initial": [
           0.995,
@@ -46,7 +46,7 @@
         ]
       },
       "entropy_coefficient": 0.005,
-      "saved_adam_learning_rate": 1e-05,
+      "saved_adam_learning_rate": 0.00001,
       "checkpoint_sha256": "fbe28e3718a5796afc2271e7b10aa04017369593b5c62e0bde1973a20f68032f",
       "source_manifest_sha256": "f501b7a735c0aaa42be00114e09f80d46f7f009d7717aa416fc30ad3cc837d6d"
     },
@@ -74,7 +74,7 @@
       "discount": 0.9985,
       "gae_lambda": 0.99,
       "entropy_coefficient": 0.001,
-      "saved_adam_learning_rate": 3.375e-05,
+      "saved_adam_learning_rate": 0.00003375,
       "checkpoint_sha256": "8ecfebbb4262234bafadabaab67f33c06e2ea7a6dc35cd9bc37d98099f20f221",
       "source_manifest_sha256": "d289e1735e7dc0f6d4a5e2274e6c935b6a282baf9ad1efa61e1be88b0607d1cd"
     },
@@ -102,7 +102,7 @@
       "discount": 0.9985,
       "gae_lambda": 0.99,
       "entropy_coefficient": 0.001,
-      "saved_adam_learning_rate": 1e-05,
+      "saved_adam_learning_rate": 0.00001,
       "checkpoint_sha256": "b24126a4df16c780f5ce65039ac4fce0c03c7d57c838b8ce5fc75fc477fa7bd9",
       "source_manifest_sha256": "f292d84bfa2f302373360855711dadd73bc4ea4e5c556ac8e1562dcee5cc1e45"
     },
@@ -145,26 +145,26 @@
     "optimizer": "Adam",
     "learning_rate_schedule": "adaptive",
     "desired_kl": 0.01,
-    "desired_kl_role": "Learning-rate adaptation; not a universal early-stop threshold",
-    "gradient_norm_limit": 1.0,
-    "value_loss_coefficient": 1.0,
+    "desired_kl_role": "Adaptive learning-rate scheduling",
+    "gradient_norm_limit": 1,
+    "value_loss_coefficient": 1,
     "clipped_value_loss": true,
     "raw_action_likelihood": "Stored Gaussian requests before physical projection"
   },
   "counting_notes": [
-    "Stage counters have distinct cumulative or local scopes and must not be summed as a uniform training run.",
-    "A separate 512-decision branch initializes the following-transfer critic; it is not a further selected rear-right actor update.",
-    "Auxiliary fitting and interface migrations have no PPO update credit.",
-    "The evaluated 536-value interface retains earlier actor tensors and adds no new PPO update after the front-left component.",
-    "Saved learning rates are checkpoint snapshots, not fixed rates over each stage.",
-    "Stage-dependent rewards and observation layouts prevent a single comparable learning curve."
+    "Early-motion counts are cumulative; subsequent stage counts describe data collected for each local training objective.",
+    "Following-transfer critic initialization uses a separate 512-decision rollout; actor updates are counted within their corresponding stage.",
+    "The PPO counters record policy-optimization updates.",
+    "The 536-value evaluation interface combines the four learned actor components.",
+    "Saved learning rates initialize training continuations and are adjusted by the adaptive schedule.",
+    "Reward terms and observation layouts are specific to each training stage."
   ],
   "comparison_video": {
     "relative_path": "../../public/media/comparison-50mm-nominal.mp4",
     "case_id": "grid_d1_mu1",
     "obstacle_height_mm": 50,
     "requested_initial_gap_mm": 218.4933173179947,
-    "friction_multiplier": 1.0,
+    "friction_multiplier": 1,
     "duration_seconds": 95.66666666666667,
     "frame_rate": 15,
     "physical_playback_speed": 1,
@@ -172,6 +172,6 @@
     "ppo_native_episode_seconds": 93.6,
     "recorded_replay_native_episode_seconds": 88.73333333333333,
     "end_behavior": "Earlier-ending method holds its final measured pose; final pair holds for two seconds.",
-    "scope": "Selected nominal demonstration; separate from training and not a completion-rate estimate."
+    "scope": "Nominal deterministic evaluation of the 50 mm controller."
   }
 }

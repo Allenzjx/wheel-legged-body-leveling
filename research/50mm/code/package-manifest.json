@@ -8,11 +8,6 @@
       "bytes": 163
     },
     {
-      "path": "artifacts/ppo_phase_v1_start/DO_NOT_USE_LEGACY_PPO_SOURCE.md",
-      "sha256": "75b975430ad1da85ecf2a22d98384d7969268edbfc1198b48d953e0cdf9901fe",
-      "bytes": 526
-    },
-    {
       "path": "artifacts/ppo_phase_v1_start/frozen_fsm_hashes.json",
       "sha256": "c36ab3e603b8881c463dd72ec6a84092b892edb0ca62c35d39c1bc6ec26a18e2",
       "bytes": 3438

@@ -4,7 +4,7 @@
 
 ## Project overview
 
-This project develops a recording interface and a residual reinforcement-learning controller for wheel-legged obstacle traversal. The robot combines rolling motion with sequential wheel lifting to cross a step. Body leveling reduces chassis inclination as wheels unload, move over the obstacle, and return to contact.
+This project develops a recording interface and a residual reinforcement-learning controller for wheel-legged obstacle traversal. The robot combines rolling motion with sequential wheel lifting to cross a step. The body-leveling objective is to limit chassis inclination as wheels unload, move over the obstacle, and return to contact.
 
 The platform has four articulated wheel legs, eight leg joints, and four driven wheels. Experiments use Isaac Sim and Isaac Lab to evaluate 50 mm and 100 mm step traversal.
 
@@ -22,10 +22,10 @@ Residual PPO adds learned corrections to the recorded motion reference. Body ori
 
 The 50 mm controller is trained across four components:
 
-1. **Early motion:** establish forward progress and the movement needed to reach the wheel-transfer phases.
-2. **Rear-right transfer:** learn contact and support transfer around the rear-right wheel.
-3. **Following transfer:** coordinate front-leg preparation, continued support transfer, and rear-left lift and placement.
-4. **Front-left wheel refinement:** encourage forward travel and reduce reverse wheel commands or counter-rotation without progress.
+1. **Early motion** establishes forward progress and the movement needed to reach the wheel-transfer phases.
+2. **Rear-right transfer** learns contact and support transfer around the rear-right wheel.
+3. **Following transfer** coordinates front-leg preparation, continued support transfer, and rear-left lift and placement.
+4. **Front-left wheel refinement** rewards forward travel and penalizes reverse wheel commands or counter-rotation without progress.
 
 Preceding components retain their weights while each new component learns its correction. PPO uses a clipped policy objective, a critic, and generalized advantage estimation. Rewards combine traversal progress and completion with stage-specific posture, contact, and motion-quality terms. The [50 mm method report](50mm/README.md) details the network architecture and optimization settings.
 
@@ -35,15 +35,15 @@ Recorded Replay and Residual PPO are compared across 39 approach-distance and fr
 
 Residual PPO completed 39/39 conditions on the 50 mm step and 37/39 on the 100 mm step, compared with 34/39 and 31/39 for Recorded Replay. The nominal comparisons show lower phase-wise roll and pitch RMS with Residual PPO. Completion, peak body inclination, and peak traversal time are reported below.
 
-![Traversal completion, peak body inclination, and peak completion time for 50 mm and 100 mm obstacles](../public/figures/poster-results-completion-table.png)
+![Traversal completion, peak body inclination, and peak completion time for 50 mm and 100 mm obstacles](../public/figures/results-completion-table.png)
 
 ### 50 mm body leveling
 
-![50 mm nominal traversal: total body inclination and phase-wise roll and pitch RMS](../public/figures/poster-results-50mm-nominal.png)
+![50 mm nominal traversal: total body inclination and phase-wise roll and pitch RMS](../public/figures/results-50mm-nominal.png)
 
 ### 100 mm body leveling
 
-![100 mm nominal traversal: total body inclination and phase-wise roll and pitch RMS](../public/figures/poster-results-100mm-nominal.png)
+![100 mm nominal traversal: total body inclination and phase-wise roll and pitch RMS](../public/figures/results-100mm-nominal.png)
 
 ## Demonstrations
 

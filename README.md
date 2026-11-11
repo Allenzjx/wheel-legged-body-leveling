@@ -2,7 +2,7 @@
 
 **Junxian Zhu · Duke University**
 
-This project investigates body leveling during wheel-legged obstacle traversal. A four-legged, wheeled robot uses a recorded motion sequence to cross a step, while Residual Proximal Policy Optimization (PPO) learns state-dependent corrections to joint and wheel commands. Experiments in Isaac Sim compare Recorded Replay and Residual PPO on 50 mm and 100 mm obstacles.
+This project investigates body leveling during wheel-legged obstacle traversal. A four-legged, wheeled robot uses a recorded motion sequence to cross a step. A residual controller trained with Proximal Policy Optimization (PPO) applies state-dependent corrections to joint and wheel commands. Experiments in Isaac Sim compare Recorded Replay and Residual PPO on 50 mm and 100 mm obstacles.
 
 [Project website](https://allenzjx.github.io/wheel-legged-body-leveling/) · [Project report](research/README.md) · [50 mm training code](research/50mm/code/)
 

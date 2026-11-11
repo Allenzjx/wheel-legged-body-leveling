@@ -35,8 +35,8 @@
     },
     {
       "path": "training.json",
-      "bytes": 6628,
-      "sha256": "b367ea35dffba3e386c0f2237f7ed0ab53e80c660dbf9bec6a13ef1fcd8a58c4"
+      "bytes": 6506,
+      "sha256": "d0507d4827ca1b7c3c5cefcdf8aa7d12474b20bdb5bba9c11ac4848ca1782a20"
     }
   ],
   "execution_record": "code/verification.json",

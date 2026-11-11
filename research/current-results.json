@@ -1,15 +1,14 @@
 {
   "schema": "wheel-legged-body-leveling.comparison-video-record.v1",
   "reviewedOn": "2026-11-03",
-  "scope": "Featured 100 mm simulation comparison-video provenance. The website Results figures are defined separately in content/results.json and public/figures.",
+  "scope": "Nominal 100 mm simulation comparison: task conditions, controller outcomes, and media metadata.",
   "featuredComparison100": {
     "caseId": "grid_d1_mu1",
     "obstacleHeightMm": 100,
     "initialGapTargetMm": 218.4933173179947,
     "initialGapDisplayMm": 218.5,
-    "frictionScale": 1.0,
-    "selection": "Selected nominal example; not a reliability estimate.",
-    "conditionsNote": "Requested initial gap and friction are matched; actual gaps after startup alignment may differ slightly.",
+    "frictionScale": 1,
+    "conditionsNote": "Both controllers use matched requested gap and friction. Startup alignment determines the measured gap.",
     "evaluation": "Frozen controller; deterministic inference without learning during evaluation.",
     "recordedReplayCompletes": true,
     "residualPpoCompletes": true,
@@ -17,19 +16,20 @@
     "media": {
       "path": "../public/media/comparison-100mm-nominal.mp4",
       "sha256": "b738502e40605131ef21e8591189bdd839ba31a256893162c8411f65a24ef157",
-      "type": "Rendering of retained simulator link poses using project robot geometry",
+      "type": "Rendering of recorded simulator link poses with the robot geometry",
       "physicalPlaybackSpeed": 1,
       "completeNativeEpisodes": true,
       "sharedCameraAndScale": true,
       "endBehavior": "An earlier-finishing method holds its final pose and timestamp; the final pair then holds for two seconds.",
       "durationSeconds": 87.8
     },
-    "checkpointSha256": "e263cdaaba087919e14bcf1c3f850f66983b84dd6cba5c54ef6494ce98481f2c"
+    "checkpointSha256": "e263cdaaba087919e14bcf1c3f850f66983b84dd6cba5c54ef6494ce98481f2c",
+    "experimentType": "Nominal deterministic controller comparison"
   },
-  "reportingLimits": [
-    "A selected successful traversal does not establish overall reliability.",
-    "Common completion and native success are separate criteria.",
-    "Completion, inclination RMS, peak inclination, pitch, and roll are different outcomes.",
-    "Each comparison retains its own obstacle height, model, task conditions, and outcome rule."
+  "measurements": [
+    "Traversal completion",
+    "Total body inclination",
+    "Phase-wise roll and pitch RMS",
+    "Completion time"
   ]
 }

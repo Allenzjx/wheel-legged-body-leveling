@@ -29,10 +29,10 @@ The 536-value interface supplies the composite actor. Its critic uses a 536 → 
 
 | Stage | Objective and execution | Training record |
 | --- | --- | --- |
-| Early motion | Learn forward progress and the motion needed to reach later support transfers; introduce posture and obstacle-gap terms | 225,280 cumulative policy decisions; 1,725 PPO updates; 34,500 Adam steps |
-| Rear-right transfer | Execute the preceding motion to the activation interval, then learn rear-right contact and continued rear-left transfer | 6,656 local decisions; 13 PPO updates; 260 Adam steps |
-| Following transfer | Learn front-leg preparation, support transfer, and rear-left lift and placement while retaining the preceding composite | 512 local decisions; 1 PPO update; 20 Adam steps |
-| Front-left wheel refinement | Encourage forward travel and reduce reverse commands or loaded counter-rotation | 2,048 stored decisions: 587 actor-eligible and 1,461 value-only; 4 PPO updates; 80 Adam steps, including 60 with actor eligibility |
+| Early motion | Establishes forward progress and the motion needed to reach later support transfers, with posture and obstacle-gap terms | 225,280 cumulative policy decisions; 1,725 PPO updates; 34,500 Adam steps |
+| Rear-right transfer | Executes the preceding motion to the activation interval, then learns rear-right contact and continued rear-left transfer | 6,656 local decisions; 13 PPO updates; 260 Adam steps |
+| Following transfer | Learns front-leg preparation, support transfer, and rear-left lift and placement while retaining the preceding composite | 512 local decisions; 1 PPO update; 20 Adam steps |
+| Front-left wheel refinement | Rewards forward travel and penalizes reverse commands or loaded counter-rotation | 2,048 stored decisions: 587 actor-eligible and 1,461 value-only; 4 PPO updates; 80 Adam steps, including 60 with actor eligibility |
 
 The early-motion counts are cumulative. Subsequent rows count data collected for their local objectives. The physical approach to each local activation interval is executed with fixed preceding actors and excluded from local learning credit. Front-left refinement uses an eligibility mask for actor updates; inactive context rows contribute to value learning.
 
@@ -58,7 +58,7 @@ Rewards combine task progress and completion with stage-specific posture, contac
 
 ## Evaluation
 
-Evaluation uses deterministic actions and fixed model weights. The nominal comparison uses a 50 mm step, an initial gap of 218.5 mm, and a friction multiplier of 1.0. Recorded Replay and Residual PPO complete the traversal in 88.7333 s and 93.6 s, respectively. The paired video preserves both full episodes at 1× physical speed with a shared camera and scale; the earlier-ending view holds its final measured pose.
+Evaluation uses deterministic actions and fixed model weights. The nominal comparison uses a 50 mm step, an initial gap of 218.5 mm, and a friction multiplier of 1.0. Both controllers complete the traversal. Their full recorded simulator episodes last 88.7333 s for Recorded Replay and 93.6 s for Residual PPO. The paired video preserves both full episodes at 1× physical speed with a shared camera and scale; the earlier-ending view holds its final measured pose.
 
 A complete-controller execution test also returned `SUCCESS` after 1,404 policy decisions and 11,232 physics ticks, corresponding to 93.6 s of simulated motion. A separate early-motion training test completed one PPO update and 20 Adam steps from 128 transitions, and its saved model passed strict reloading. [Execution results](code/VERIFICATION.md) report the test commands and coverage.
 

@@ -4,7 +4,7 @@
   "affiliation": "Mechanical Engineering and Materials Science · Duke University",
   "advisor": "Dr. Oca",
   "updated": "10 November 2026",
-  "intro": "Recorded motion provides reference joint and wheel commands. Residual PPO uses robot-state feedback to adjust these commands during obstacle traversal, with body leveling evaluated on 50 mm and 100 mm steps.",
+  "intro": "Recorded motion provides reference joint and wheel commands. Residual Proximal Policy Optimization (PPO) uses robot-state feedback to adjust these commands during obstacle traversal, with body leveling evaluated on 50 mm and 100 mm steps.",
   "recordingDemo": null,
   "videos": [
     {
